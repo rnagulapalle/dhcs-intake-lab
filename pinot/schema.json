@@ -1,0 +1,29 @@
+{
+  "schemaName": "dhcs_crisis_intake",
+  "dimensionFieldSpecs": [
+    {"name":"event_id","dataType":"STRING"},
+    {"name":"channel","dataType":"STRING"},
+    {"name":"county","dataType":"STRING"},
+    {"name":"presenting_problem","dataType":"STRING"},
+    {"name":"risk_level","dataType":"STRING"},
+    {"name":"disposition","dataType":"STRING"},
+    {"name":"language","dataType":"STRING"}
+  ],
+  "metricFieldSpecs": [
+    {"name":"age","dataType":"INT"},
+    {"name":"wait_time_sec","dataType":"INT"},
+    {"name":"call_duration_sec","dataType":"INT"},
+    {"name":"prior_contacts_90d","dataType":"INT"},
+    {"name":"suicidal_ideation","dataType":"INT"},
+    {"name":"homicidal_ideation","dataType":"INT"},
+    {"name":"substance_use","dataType":"INT"}
+  ],
+  "dateTimeFieldSpecs": [
+    {
+      "name":"event_time_ms",
+      "dataType":"LONG",
+      "format":"1:MILLISECONDS:EPOCH",
+      "granularity":"1:MILLISECONDS"
+    }
+  ]
+}

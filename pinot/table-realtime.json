@@ -1,0 +1,37 @@
+{
+  "tableName": "dhcs_crisis_intake",
+  "tableType": "REALTIME",
+  "segmentsConfig": {
+    "schemaName": "dhcs_crisis_intake",
+    "timeColumnName": "event_time_ms",
+    "timeType": "MILLISECONDS",
+    "replication": "1",
+    "segmentFlushThresholdRows": 5000,
+    "segmentFlushThresholdTime": "3600000"
+  },
+  "tenants": {
+    "broker": "DefaultTenant",
+    "server": "DefaultTenant"
+  },
+  "tableIndexConfig": {
+    "loadMode": "MMAP"
+  },
+  "ingestionConfig": {
+    "streamIngestionConfig": {
+      "streamConfigMaps": [
+        {
+          "streamType": "kafka",
+          "stream.kafka.topic.name": "dhcs_crisis_intake",
+          "stream.kafka.broker.list": "kafka:9092",
+          "stream.kafka.consumer.type": "lowlevel",
+          "stream.kafka.consumer.prop.auto.offset.reset": "smallest",
+          "stream.kafka.decoder.class.name": "org.apache.pinot.plugin.stream.kafka.KafkaJSONMessageDecoder"
+        }
+      ]
+    }
+  },
+  "metadata": {},
+  "quota": {},
+  "routing": {},
+  "fieldConfigList": []
+}

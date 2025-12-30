@@ -1,0 +1,19 @@
+# mac
+.DS_Store
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# docker / local state
+data/
+tmp/
+logs/
+*.log
+
+# pinot runtime (if you mount volumes later)
+pinot-data/
+pinot/segments/
+pinot/tmp/
