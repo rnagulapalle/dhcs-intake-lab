@@ -122,3 +122,51 @@ services:
       TOPIC: "dhcs_crisis_intake"
       RATE_PER_SEC: "5"
     restart: unless-stopped
+
+  # Multi-Agent AI System Services
+  agent-api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: agent-api
+    depends_on:
+      pinot-broker:
+        condition: service_started
+    ports:
+      - "8000:8000"
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      PINOT_BROKER_URL: "http://pinot-broker:8099"
+      KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+      KAFKA_TOPIC: "dhcs_crisis_intake"
+      CHROMA_PERSIST_DIR: "/app/chroma_data"
+      LOG_LEVEL: "INFO"
+    volumes:
+      - chroma_data:/app/chroma_data
+      - ./agents:/app/agents
+      - ./api:/app/api
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    container_name: dashboard
+    depends_on:
+      agent-api:
+        condition: service_started
+    ports:
+      - "8501:8501"
+    environment:
+      API_BASE_URL: "http://agent-api:8000"
+    volumes:
+      - ./dashboard:/app
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
