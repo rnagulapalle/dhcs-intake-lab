@@ -1,0 +1,36 @@
+DHCS BHT Demo - Deployment Information
+======================================
+
+Deployed: Sun Jan  4 21:31:39 PST 2026
+
+API URL: http://dhcs-bht-demo-alb-398486025.us-west-2.elb.amazonaws.com
+AWS Account: 962639302232
+Region: us-west-2
+
+Resources:
+- ECS Cluster: dhcs-bht-demo-cluster
+- ECS Service: dhcs-bht-demo-service
+- Load Balancer: dhcs-bht-demo-alb-398486025.us-west-2.elb.amazonaws.com
+- Security Group: sg-0f386444b5ab04d12
+- ECR Repository: 962639302232.dkr.ecr.us-west-2.amazonaws.com/dhcs-bht-demo-api
+
+Management Commands:
+-------------------
+
+# Check service status
+aws ecs describe-services --cluster dhcs-bht-demo-cluster --services dhcs-bht-demo-service --region us-west-2
+
+# View logs
+aws logs tail /ecs/dhcs-bht-demo --follow --region us-west-2
+
+# Scale down (stop, saves ~$15/mo)
+aws ecs update-service --cluster dhcs-bht-demo-cluster --service dhcs-bht-demo-service --desired-count 0 --region us-west-2
+
+# Scale up (restart)
+aws ecs update-service --cluster dhcs-bht-demo-cluster --service dhcs-bht-demo-service --desired-count 1 --region us-west-2
+
+# Force new deployment
+aws ecs update-service --cluster dhcs-bht-demo-cluster --service dhcs-bht-demo-service --force-new-deployment --region us-west-2
+
+# Teardown (delete everything)
+./deployment/teardown.sh

@@ -1,0 +1,20 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install dependencies
+RUN pip install --no-cache-dir \
+    fastapi==0.109.0 \
+    uvicorn[standard]==0.27.0 \
+    kafka-python==2.0.2 \
+    faker==22.0.0 \
+    pydantic==2.5.3
+
+# Copy generator code
+COPY generator/producer_api.py /app/producer_api.py
+
+# Expose API port
+EXPOSE 8001
+
+# Run the API
+CMD ["uvicorn", "producer_api:app", "--host", "0.0.0.0", "--port", "8001"]

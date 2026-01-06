@@ -10,6 +10,7 @@ from datetime import datetime
 import plotly.express as px
 import plotly.graph_objects as go
 import os
+from query_suggestions import get_top_queries_by_category, get_suggestions_for_input, get_random_query_examples
 
 # Configuration
 API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
@@ -54,6 +55,71 @@ st.markdown("""
     .success {
         color: #2ca02c;
         font-weight: bold;
+    }
+    div[data-testid="stButton"] > button {
+        background: #FFFFFF;
+        color: #172B4D;
+        border: 1px solid #DFE1E6;
+        border-radius: 6px;
+        padding: 10px 16px;
+        font-size: 14px;
+        font-weight: 400;
+        transition: all 0.15s ease;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        text-align: left;
+        letter-spacing: 0px;
+    }
+    div[data-testid="stButton"] > button:hover {
+        background: #F4F5F7;
+        border-color: #B3BAC5;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        transform: none;
+    }
+    div[data-testid="stButton"] > button:active {
+        background: #EBECF0;
+        border-color: #0052CC;
+    }
+    div[data-testid="stButton"] > button:disabled {
+        background: #F4F5F7;
+        color: #A5ADBA;
+        cursor: not-allowed;
+        box-shadow: none;
+        border-color: #DFE1E6;
+    }
+    div[data-testid="stButton"] > button::before {
+        content: "💬 ";
+        margin-right: 6px;
+        opacity: 0.5;
+    }
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background-color: transparent;
+    }
+    .stTabs [data-baseweb="tab"] {
+        background-color: transparent;
+        border: 1px solid #DFE1E6;
+        border-radius: 6px;
+        padding: 8px 16px;
+        color: #42526E;
+        font-weight: 500;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #DEEBFF !important;
+        border-color: #0052CC !important;
+        color: #0052CC !important;
+    }
+    .footer-text {
+        position: fixed;
+        bottom: 80px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: #999;
+        font-size: 0.75rem;
+        padding: 10px;
+        background: linear-gradient(to top, rgba(255,255,255,0.95), transparent);
+        pointer-events: none;
+        z-index: 999;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -108,48 +174,206 @@ This AI assistant helps DHCS behavioral health administrators:
 
 # Main content
 if mode == "💬 Chat Assistant":
-    st.markdown('<p class="main-header">AI Chat Assistant</p>', unsafe_allow_html=True)
-    st.markdown("Ask questions about crisis intake data in natural language")
-
-    # Initialize chat history
+    # Initialize session state
     if "messages" not in st.session_state:
         st.session_state.messages = []
+    if "is_processing" not in st.session_state:
+        st.session_state.is_processing = False
+    if "query_history" not in st.session_state:
+        st.session_state.query_history = []
+
+    # Show top K queries if no chat history (cold start) - Cleaner layout
+    if len(st.session_state.messages) == 0:
+        # Center content with better spacing
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown('<h2 style="text-align: center; font-weight: 600; color: #172B4D; margin-bottom: 12px;">What can I help you with today?</h2>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align: center; color: #6B778C; margin-bottom: 40px;">Ask questions about crisis intake data across California counties</p>', unsafe_allow_html=True)
+
+        top_queries = get_top_queries_by_category()
+
+        # Create tabs for different categories - Atlassian style
+        tabs = st.tabs(list(top_queries.keys()))
+
+        for tab, (category, queries) in zip(tabs, top_queries.items()):
+            with tab:
+                st.markdown("<br>", unsafe_allow_html=True)
+                for query in queries:
+                    if st.button(query, key=f"query_{category}_{query[:20]}", use_container_width=True):
+                        st.session_state.selected_query = query
+                        st.rerun()
+                    st.markdown("<div style='margin: 8px 0;'></div>", unsafe_allow_html=True)
+
+    # Check if a query was selected from suggestions
+    if "selected_query" in st.session_state and not st.session_state.is_processing:
+        st.session_state.is_processing = True
+        st.rerun()
+
+    # Process the selected query
+    if st.session_state.is_processing and "selected_query" not in st.session_state and len(st.session_state.messages) > 0:
+        # Get the last user message (which was just added)
+        prompt = st.session_state.query_history[-1] if st.session_state.query_history else None
+
+        if prompt:
+            # Get AI response with spinner
+            with st.chat_message("assistant"):
+                with st.spinner("⏳ Processing your query..."):
+                    result = call_api("chat", {"message": prompt})
+
+                    if result and result.get("success"):
+                        response = result.get("response", "No response")
+                        st.markdown(response)
+
+                        # Show which agent was used
+                        agent_used = result.get("agent_used", "unknown")
+                        st.caption(f"_Agent used: {agent_used}_")
+
+                        # Add to chat history
+                        st.session_state.messages.append({"role": "assistant", "content": response})
+
+                        # Show raw data in expander
+                        with st.expander("View detailed results"):
+                            st.json(result)
+                    else:
+                        error_msg = "Sorry, I encountered an error processing your request."
+                        st.error(error_msg)
+                        st.session_state.messages.append({"role": "assistant", "content": error_msg})
+
+            st.session_state.is_processing = False
+            st.rerun()
+    elif "selected_query" in st.session_state:
+        prompt = st.session_state.selected_query
+        del st.session_state.selected_query
+
+        # Add user message
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        st.session_state.query_history.append(prompt)
+        st.rerun()
+
+    # Show processing indicator BEFORE displaying chat if processing
+    if st.session_state.is_processing:
+        st.warning("⏳ Processing your query... Please wait. Do not click other buttons.")
+        st.stop()
 
     # Display chat history
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-    # Chat input
-    if prompt := st.chat_input("Ask a question about crisis intake data..."):
-        # Add user message
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
+    # Show follow-up suggestions after the last assistant response
+    if len(st.session_state.messages) > 0 and st.session_state.messages[-1]["role"] == "assistant":
+        last_user_query = None
+        for i in range(len(st.session_state.messages) - 1, -1, -1):
+            if st.session_state.messages[i]["role"] == "user":
+                last_user_query = st.session_state.messages[i]["content"].lower()
+                break
 
-        # Get AI response
-        with st.chat_message("assistant"):
-            with st.spinner("Thinking..."):
-                result = call_api("chat", {"message": prompt})
+        if last_user_query:
+            # Generate context-aware follow-up questions
+            follow_ups = []
 
-                if result and result.get("success"):
-                    response = result.get("response", "No response")
-                    st.markdown(response)
+            # Extract entities from last query
+            from query_suggestions import CA_COUNTIES, RISK_LEVELS, PROBLEMS, CHANNELS
 
-                    # Show which agent was used
-                    agent_used = result.get("agent_used", "unknown")
-                    st.caption(f"_Agent used: {agent_used}_")
+            # County-specific follow-ups
+            mentioned_county = None
+            for county in CA_COUNTIES:
+                if county.lower() in last_user_query:
+                    mentioned_county = county
+                    break
 
-                    # Add to chat history
-                    st.session_state.messages.append({"role": "assistant", "content": response})
+            if mentioned_county:
+                follow_ups = [
+                    f"What's the average wait time in {mentioned_county}?",
+                    f"Show high-risk cases in {mentioned_county}",
+                    f"What are the most common problems in {mentioned_county}?"
+                ]
+            elif "high-risk" in last_user_query or "risk" in last_user_query:
+                follow_ups = [
+                    "Which counties have the most high-risk cases?",
+                    "Show suicidal ideation cases in the last hour",
+                    "What's the mobile team response time for high-risk cases?"
+                ]
+            elif "county" in last_user_query or "counties" in last_user_query:
+                follow_ups = [
+                    "Show me crisis calls for Los Angeles County",
+                    "What's the risk level distribution by county?",
+                    "Compare wait times across top 3 counties"
+                ]
+            elif "language" in last_user_query or "spanish" in last_user_query:
+                follow_ups = [
+                    "How many non-English crisis calls today?",
+                    "What languages are most requested?",
+                    "Spanish language call trends by county"
+                ]
+            elif "wait" in last_user_query or "response time" in last_user_query:
+                follow_ups = [
+                    "Which counties have the longest wait times?",
+                    "Compare wait times by channel type",
+                    "Show wait time trends over last 24 hours"
+                ]
+            else:
+                # Generic follow-ups
+                follow_ups = [
+                    "Show high-risk cases from the last hour",
+                    "Which counties have highest call volumes?",
+                    "What are the most common presenting problems?"
+                ]
 
-                    # Show raw data in expander
-                    with st.expander("View detailed results"):
-                        st.json(result)
-                else:
-                    error_msg = "Sorry, I encountered an error processing your request."
-                    st.error(error_msg)
-                    st.session_state.messages.append({"role": "assistant", "content": error_msg})
+            if follow_ups:
+                st.markdown("---")
+                st.markdown("**💬 Related Questions:**")
+                cols = st.columns(3)
+                for idx, follow_up in enumerate(follow_ups[:3]):
+                    with cols[idx]:
+                        if st.button(follow_up, key=f"followup_{idx}", use_container_width=True):
+                            st.session_state.selected_query = follow_up
+                            st.rerun()
+
+    # Chat input - using Streamlit's native chat_input (cleaner ChatGPT-style)
+    if not st.session_state.is_processing:
+        if prompt := st.chat_input("Message DHCS AI Assistant", disabled=st.session_state.is_processing):
+            st.session_state.is_processing = True
+
+            # Add user message
+            st.session_state.messages.append({"role": "user", "content": prompt})
+            st.session_state.query_history.append(prompt)
+
+            with st.chat_message("user"):
+                st.markdown(prompt)
+
+            # Get AI response
+            with st.chat_message("assistant"):
+                with st.spinner("⏳ Processing your query..."):
+                    result = call_api("chat", {"message": prompt})
+
+                    if result and result.get("success"):
+                        response = result.get("response", "No response")
+                        st.markdown(response)
+
+                        # Show which agent was used
+                        agent_used = result.get("agent_used", "unknown")
+                        st.caption(f"_Agent used: {agent_used}_")
+
+                        # Add to chat history
+                        st.session_state.messages.append({"role": "assistant", "content": response})
+
+                        # Show raw data in expander
+                        with st.expander("View detailed results"):
+                            st.json(result)
+                    else:
+                        error_msg = "Sorry, I encountered an error processing your request."
+                        st.error(error_msg)
+                        st.session_state.messages.append({"role": "assistant", "content": error_msg})
+
+            st.session_state.is_processing = False
+            st.rerun()
+
+    # Footer - Clean ChatGPT style
+    st.markdown("""
+    <div class='footer-text'>
+        Powered by OpenAI GPT-4 · LangGraph · Apache Pinot · ChromaDB
+    </div>
+    """, unsafe_allow_html=True)
 
 elif mode == "📊 Analytics Dashboard":
     st.markdown('<p class="main-header">Analytics Dashboard</p>', unsafe_allow_html=True)
@@ -375,12 +599,3 @@ elif mode == "📚 Knowledge Base":
                             st.caption(f"Relevance score: {1 - doc['distance']:.2f}")
             else:
                 st.warning("No results found")
-
-# Footer
-st.markdown("---")
-st.markdown("""
-<div style='text-align: center; color: #666;'>
-    <p>DHCS Behavioral Health Treatment AI Assistant | Demo System with Synthetic Data</p>
-    <p>Powered by OpenAI GPT-4, LangGraph, Apache Pinot & ChromaDB</p>
-</div>
-""", unsafe_allow_html=True)
