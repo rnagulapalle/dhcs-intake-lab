@@ -17,3 +17,7 @@ logs/
 pinot-data/
 pinot/segments/
 pinot/tmp/
+# Temporary files
+*.png
+*_old_backup.py
+*_backup.py
