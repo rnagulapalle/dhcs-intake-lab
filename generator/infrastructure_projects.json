@@ -1,0 +1,502 @@
+[
+  {
+    "project_id": "d17f6487-df41-41ad-9565-1b4ca287a2fa",
+    "project_name": "Project 1",
+    "project_type": "Supportive Housing",
+    "county": "Orange",
+    "status": "Construction",
+    "budget_total": 16495349,
+    "capacity": 21,
+    "completion_percentage": 24
+  },
+  {
+    "project_id": "8b296932-b6c0-4841-a0fa-5e4272336161",
+    "project_name": "Project 2",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "San Diego",
+    "status": "Planning",
+    "budget_total": 19752142,
+    "capacity": 40,
+    "completion_percentage": 74
+  },
+  {
+    "project_id": "8f44f0e3-39b7-4d37-ab58-a04728a26c1a",
+    "project_name": "Project 3",
+    "project_type": "Residential Treatment",
+    "county": "Los Angeles",
+    "status": "Design",
+    "budget_total": 13777241,
+    "capacity": 27,
+    "completion_percentage": 82
+  },
+  {
+    "project_id": "cc7ba7d5-71cd-4fe1-bdba-b4522c597aad",
+    "project_name": "Project 4",
+    "project_type": "Supportive Housing",
+    "county": "Los Angeles",
+    "status": "Operational",
+    "budget_total": 7089297,
+    "capacity": 26,
+    "completion_percentage": 38
+  },
+  {
+    "project_id": "18c94c0c-6996-4cd8-a49b-a364bc85ab77",
+    "project_name": "Project 5",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Orange",
+    "status": "Design",
+    "budget_total": 21175473,
+    "capacity": 34,
+    "completion_percentage": 27
+  },
+  {
+    "project_id": "77269367-c6ea-43c9-a82b-dd86ef1ab21c",
+    "project_name": "Project 6",
+    "project_type": "Residential Treatment",
+    "county": "San Diego",
+    "status": "Construction",
+    "budget_total": 25118068,
+    "capacity": 18,
+    "completion_percentage": 86
+  },
+  {
+    "project_id": "d2ba95b7-8b42-4393-94db-19c1a5f5c194",
+    "project_name": "Project 7",
+    "project_type": "Supportive Housing",
+    "county": "San Diego",
+    "status": "Operational",
+    "budget_total": 16094956,
+    "capacity": 23,
+    "completion_percentage": 76
+  },
+  {
+    "project_id": "920bb4b3-c198-4377-8218-cebeb50f1248",
+    "project_name": "Project 8",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Los Angeles",
+    "status": "Operational",
+    "budget_total": 23710622,
+    "capacity": 22,
+    "completion_percentage": 24
+  },
+  {
+    "project_id": "41cf9083-6782-4600-843b-f1825fc53324",
+    "project_name": "Project 9",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Los Angeles",
+    "status": "Design",
+    "budget_total": 22656176,
+    "capacity": 17,
+    "completion_percentage": 53
+  },
+  {
+    "project_id": "96cd9c47-303b-4db5-97f1-e965a95acfdb",
+    "project_name": "Project 10",
+    "project_type": "Residential Treatment",
+    "county": "Orange",
+    "status": "Operational",
+    "budget_total": 5074437,
+    "capacity": 31,
+    "completion_percentage": 69
+  },
+  {
+    "project_id": "65e022e6-ddd7-4399-a1bb-f3251b3ddc0e",
+    "project_name": "Project 11",
+    "project_type": "Residential Treatment",
+    "county": "Orange",
+    "status": "Construction",
+    "budget_total": 6743641,
+    "capacity": 29,
+    "completion_percentage": 87
+  },
+  {
+    "project_id": "9942fa0d-8dbd-4991-99fb-962b80211dcf",
+    "project_name": "Project 12",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "status": "Design",
+    "budget_total": 29272047,
+    "capacity": 19,
+    "completion_percentage": 54
+  },
+  {
+    "project_id": "8faad50f-b4a7-4bc0-92fc-6296d6e52f18",
+    "project_name": "Project 13",
+    "project_type": "Supportive Housing",
+    "county": "Los Angeles",
+    "status": "Planning",
+    "budget_total": 10221958,
+    "capacity": 20,
+    "completion_percentage": 38
+  },
+  {
+    "project_id": "c585554e-ccd5-4fdd-85a1-4d8ee2a4a8e5",
+    "project_name": "Project 14",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "status": "Planning",
+    "budget_total": 7890322,
+    "capacity": 48,
+    "completion_percentage": 48
+  },
+  {
+    "project_id": "0143c3c5-fc43-434e-ac1c-a7cb7139b2ce",
+    "project_name": "Project 15",
+    "project_type": "Supportive Housing",
+    "county": "Alameda",
+    "status": "Construction",
+    "budget_total": 13636578,
+    "capacity": 27,
+    "completion_percentage": 28
+  },
+  {
+    "project_id": "4864cdde-4777-4834-b936-afc14b651910",
+    "project_name": "Project 16",
+    "project_type": "Residential Treatment",
+    "county": "Orange",
+    "status": "Construction",
+    "budget_total": 8093924,
+    "capacity": 20,
+    "completion_percentage": 62
+  },
+  {
+    "project_id": "a575112e-1def-432b-a0ac-719387935986",
+    "project_name": "Project 17",
+    "project_type": "Supportive Housing",
+    "county": "San Diego",
+    "status": "Design",
+    "budget_total": 23553894,
+    "capacity": 33,
+    "completion_percentage": 20
+  },
+  {
+    "project_id": "6e6db23d-c16b-4500-b2a8-45cd4dc0cf4b",
+    "project_name": "Project 18",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "San Diego",
+    "status": "Operational",
+    "budget_total": 29426513,
+    "capacity": 49,
+    "completion_percentage": 67
+  },
+  {
+    "project_id": "ba6afd36-57f0-40ad-ba32-8fd6d59cad95",
+    "project_name": "Project 19",
+    "project_type": "Residential Treatment",
+    "county": "San Diego",
+    "status": "Planning",
+    "budget_total": 13900087,
+    "capacity": 39,
+    "completion_percentage": 95
+  },
+  {
+    "project_id": "69e42f6a-ae35-45ca-86d9-ef1d7adf4ae6",
+    "project_name": "Project 20",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "San Diego",
+    "status": "Construction",
+    "budget_total": 8996388,
+    "capacity": 48,
+    "completion_percentage": 81
+  },
+  {
+    "project_id": "bd2265d6-749b-42a9-8064-eea7cb8693d4",
+    "project_name": "Project 21",
+    "project_type": "Residential Treatment",
+    "county": "Los Angeles",
+    "status": "Design",
+    "budget_total": 23826076,
+    "capacity": 29,
+    "completion_percentage": 32
+  },
+  {
+    "project_id": "c01291dd-cbbf-4cb4-80c9-83ebcd51a45b",
+    "project_name": "Project 22",
+    "project_type": "Supportive Housing",
+    "county": "San Diego",
+    "status": "Operational",
+    "budget_total": 29106040,
+    "capacity": 20,
+    "completion_percentage": 85
+  },
+  {
+    "project_id": "4344e8ba-57d4-4c2b-b05d-f0ec9a825d98",
+    "project_name": "Project 23",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "status": "Design",
+    "budget_total": 23691760,
+    "capacity": 48,
+    "completion_percentage": 87
+  },
+  {
+    "project_id": "667a1f21-a33b-4a86-b884-e3148634ee1f",
+    "project_name": "Project 24",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "San Diego",
+    "status": "Design",
+    "budget_total": 5954179,
+    "capacity": 20,
+    "completion_percentage": 48
+  },
+  {
+    "project_id": "79da91ef-ad8e-4a9e-862b-12778b0f373f",
+    "project_name": "Project 25",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "San Diego",
+    "status": "Planning",
+    "budget_total": 13331708,
+    "capacity": 40,
+    "completion_percentage": 25
+  },
+  {
+    "project_id": "c6942ea6-b546-471a-bb03-cea1b5b110aa",
+    "project_name": "Project 26",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "status": "Construction",
+    "budget_total": 7728310,
+    "capacity": 28,
+    "completion_percentage": 50
+  },
+  {
+    "project_id": "7fdeda05-ec92-4d06-aa65-f4e291b1cf88",
+    "project_name": "Project 27",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Los Angeles",
+    "status": "Construction",
+    "budget_total": 22606549,
+    "capacity": 35,
+    "completion_percentage": 51
+  },
+  {
+    "project_id": "b9740a53-a6c5-45f3-97b2-c6c54c43b355",
+    "project_name": "Project 28",
+    "project_type": "Residential Treatment",
+    "county": "San Diego",
+    "status": "Design",
+    "budget_total": 27591060,
+    "capacity": 27,
+    "completion_percentage": 92
+  },
+  {
+    "project_id": "94ce7ddb-f000-4abb-8e63-f12b9915b63c",
+    "project_name": "Project 29",
+    "project_type": "Residential Treatment",
+    "county": "San Diego",
+    "status": "Construction",
+    "budget_total": 5890871,
+    "capacity": 44,
+    "completion_percentage": 33
+  },
+  {
+    "project_id": "3f9621e2-f03c-43ab-9a6d-94ace58fe7d8",
+    "project_name": "Project 30",
+    "project_type": "Residential Treatment",
+    "county": "San Diego",
+    "status": "Operational",
+    "budget_total": 25120423,
+    "capacity": 16,
+    "completion_percentage": 40
+  },
+  {
+    "project_id": "43aa7e87-c59f-4939-8f25-99404d6919c6",
+    "project_name": "Project 31",
+    "project_type": "Residential Treatment",
+    "county": "Orange",
+    "status": "Operational",
+    "budget_total": 23618144,
+    "capacity": 19,
+    "completion_percentage": 66
+  },
+  {
+    "project_id": "ef69f12c-71c0-4ddf-8cdc-2424ec840283",
+    "project_name": "Project 32",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "San Diego",
+    "status": "Planning",
+    "budget_total": 23965896,
+    "capacity": 34,
+    "completion_percentage": 79
+  },
+  {
+    "project_id": "375a3882-4311-4c7f-a975-8bcdf3e60bb1",
+    "project_name": "Project 33",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Orange",
+    "status": "Operational",
+    "budget_total": 20284595,
+    "capacity": 23,
+    "completion_percentage": 35
+  },
+  {
+    "project_id": "3dd9bd03-59d1-483e-b355-cccbc5b0e3d7",
+    "project_name": "Project 34",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "San Diego",
+    "status": "Planning",
+    "budget_total": 13429521,
+    "capacity": 23,
+    "completion_percentage": 85
+  },
+  {
+    "project_id": "507b6a70-d793-4eef-a497-97636a3d52a6",
+    "project_name": "Project 35",
+    "project_type": "Residential Treatment",
+    "county": "Orange",
+    "status": "Design",
+    "budget_total": 23104241,
+    "capacity": 50,
+    "completion_percentage": 63
+  },
+  {
+    "project_id": "ce325bae-c6bd-4b68-bb78-998715b1486f",
+    "project_name": "Project 36",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "status": "Construction",
+    "budget_total": 20335242,
+    "capacity": 22,
+    "completion_percentage": 77
+  },
+  {
+    "project_id": "3da7583b-8862-4b09-afdf-73161103e54d",
+    "project_name": "Project 37",
+    "project_type": "Residential Treatment",
+    "county": "Orange",
+    "status": "Design",
+    "budget_total": 25935075,
+    "capacity": 46,
+    "completion_percentage": 42
+  },
+  {
+    "project_id": "9bc27c42-e651-40c1-bd6e-7b0b99ff76f9",
+    "project_name": "Project 38",
+    "project_type": "Supportive Housing",
+    "county": "Orange",
+    "status": "Construction",
+    "budget_total": 6115841,
+    "capacity": 45,
+    "completion_percentage": 70
+  },
+  {
+    "project_id": "768549d1-3752-402e-9361-9352b96f793e",
+    "project_name": "Project 39",
+    "project_type": "Supportive Housing",
+    "county": "San Diego",
+    "status": "Construction",
+    "budget_total": 20431985,
+    "capacity": 37,
+    "completion_percentage": 84
+  },
+  {
+    "project_id": "f2af50e2-8666-48fa-9e35-32823b13d5b9",
+    "project_name": "Project 40",
+    "project_type": "Residential Treatment",
+    "county": "Alameda",
+    "status": "Design",
+    "budget_total": 8198932,
+    "capacity": 42,
+    "completion_percentage": 95
+  },
+  {
+    "project_id": "403ae98c-74a1-420d-a0c7-26f2017c972c",
+    "project_name": "Project 41",
+    "project_type": "Residential Treatment",
+    "county": "Orange",
+    "status": "Operational",
+    "budget_total": 26671844,
+    "capacity": 23,
+    "completion_percentage": 64
+  },
+  {
+    "project_id": "5f04c5f7-1e00-4229-893c-1341156121c3",
+    "project_name": "Project 42",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "status": "Construction",
+    "budget_total": 28390282,
+    "capacity": 35,
+    "completion_percentage": 94
+  },
+  {
+    "project_id": "fc6ce4b4-85f9-4ac1-aad2-48cfe60b0ca4",
+    "project_name": "Project 43",
+    "project_type": "Supportive Housing",
+    "county": "San Diego",
+    "status": "Construction",
+    "budget_total": 17955688,
+    "capacity": 43,
+    "completion_percentage": 32
+  },
+  {
+    "project_id": "ce52d4e6-b7d3-402f-856a-faf337bbe4c9",
+    "project_name": "Project 44",
+    "project_type": "Residential Treatment",
+    "county": "Orange",
+    "status": "Design",
+    "budget_total": 17466637,
+    "capacity": 46,
+    "completion_percentage": 75
+  },
+  {
+    "project_id": "067d6b0f-0f78-48c5-bbdd-7201e82e3db5",
+    "project_name": "Project 45",
+    "project_type": "Residential Treatment",
+    "county": "Los Angeles",
+    "status": "Design",
+    "budget_total": 15438027,
+    "capacity": 44,
+    "completion_percentage": 42
+  },
+  {
+    "project_id": "b0c02d54-978f-4100-a7d7-5fb53adc1f15",
+    "project_name": "Project 46",
+    "project_type": "Supportive Housing",
+    "county": "Orange",
+    "status": "Planning",
+    "budget_total": 19065530,
+    "capacity": 50,
+    "completion_percentage": 56
+  },
+  {
+    "project_id": "32c910a1-05d5-4372-91b3-fba994ffda87",
+    "project_name": "Project 47",
+    "project_type": "Residential Treatment",
+    "county": "Orange",
+    "status": "Construction",
+    "budget_total": 13542886,
+    "capacity": 22,
+    "completion_percentage": 41
+  },
+  {
+    "project_id": "cbef91d2-ddc1-4662-ae53-1432174a343b",
+    "project_name": "Project 48",
+    "project_type": "Residential Treatment",
+    "county": "Orange",
+    "status": "Planning",
+    "budget_total": 7733688,
+    "capacity": 40,
+    "completion_percentage": 49
+  },
+  {
+    "project_id": "5ae75a64-5825-4bf3-8cb9-76ba31b830af",
+    "project_name": "Project 49",
+    "project_type": "Crisis Stabilization Unit",
+    "county": "Los Angeles",
+    "status": "Planning",
+    "budget_total": 29633637,
+    "capacity": 17,
+    "completion_percentage": 48
+  },
+  {
+    "project_id": "b66befb9-32b5-4cb4-bdfb-d52e8b3e560d",
+    "project_name": "Project 50",
+    "project_type": "Supportive Housing",
+    "county": "Los Angeles",
+    "status": "Construction",
+    "budget_total": 21770650,
+    "capacity": 44,
+    "completion_percentage": 50
+  }
+]

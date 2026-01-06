@@ -1,601 +1,794 @@
 """
-Streamlit Dashboard for DHCS BHT Multi-Agent System
-Admin interface for demonstrating AI capabilities
+DHCS BHT Multi-Agent Dashboard - Wireframe Implementation
+Handles multiple use cases with context-aware UI
 """
 import streamlit as st
 import requests
 import json
 import pandas as pd
 from datetime import datetime
-import plotly.express as px
-import plotly.graph_objects as go
 import os
-from query_suggestions import get_top_queries_by_category, get_suggestions_for_input, get_random_query_examples
 
 # Configuration
 API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
 
 # Page config
 st.set_page_config(
-    page_title="DHCS BHT AI Assistant",
+    page_title="DHCS BHT AI Platform",
     page_icon="🏥",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Custom CSS - Light, clean design inspired by ChatGPT/Grok
 st.markdown("""
 <style>
-    .main-header {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #1f77b4;
+    /* Hide default Streamlit elements */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+
+    /* Global styles */
+    * {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
-    .sub-header {
-        font-size: 1.5rem;
-        color: #555;
+
+    /* Main container - pure white background */
+    .main {
+        padding: 0 !important;
+        background-color: #FFFFFF;
     }
-    .metric-card {
-        background-color: #f0f2f6;
-        padding: 20px;
-        border-radius: 10px;
-        margin: 10px 0;
+
+    /* Streamlit columns */
+    [data-testid="column"] {
+        background-color: #FFFFFF;
+        padding: 20px 16px;
     }
-    .agent-response {
-        background-color: #e8f4f8;
-        padding: 15px;
-        border-radius: 8px;
-        border-left: 4px solid #1f77b4;
-        margin: 10px 0;
+
+    /* Left Navigation Panel - very light gray */
+    [data-testid="column"]:first-child {
+        background-color: #FAFAFA;
+        border-right: 1px solid #E5E5E5;
     }
-    .high-risk {
-        color: #d62728;
-        font-weight: bold;
+
+    /* Right Panel - very light gray */
+    [data-testid="column"]:last-child {
+        background-color: #FAFAFA;
+        border-left: 1px solid #E5E5E5;
     }
-    .success {
-        color: #2ca02c;
-        font-weight: bold;
-    }
+
+    /* Use case navigation buttons - minimal style */
     div[data-testid="stButton"] > button {
+        width: 100%;
+        text-align: left;
+        padding: 10px 14px;
+        margin: 3px 0;
         background: #FFFFFF;
-        color: #172B4D;
-        border: 1px solid #DFE1E6;
-        border-radius: 6px;
-        padding: 10px 16px;
+        border: 1px solid #E5E5E5;
+        border-radius: 8px;
+        color: #1F1F1F;
         font-size: 14px;
         font-weight: 400;
+        cursor: pointer;
         transition: all 0.15s ease;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        text-align: left;
-        letter-spacing: 0px;
-    }
-    div[data-testid="stButton"] > button:hover {
-        background: #F4F5F7;
-        border-color: #B3BAC5;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-        transform: none;
-    }
-    div[data-testid="stButton"] > button:active {
-        background: #EBECF0;
-        border-color: #0052CC;
-    }
-    div[data-testid="stButton"] > button:disabled {
-        background: #F4F5F7;
-        color: #A5ADBA;
-        cursor: not-allowed;
         box-shadow: none;
-        border-color: #DFE1E6;
     }
-    div[data-testid="stButton"] > button::before {
-        content: "💬 ";
-        margin-right: 6px;
-        opacity: 0.5;
+
+    div[data-testid="stButton"] > button:hover {
+        background: #F5F5F5;
+        border-color: #D1D1D1;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
-        background-color: transparent;
+
+    div[data-testid="stButton"] > button:active {
+        background: #EBEBEB;
+        border-color: #1F1F1F;
     }
-    .stTabs [data-baseweb="tab"] {
-        background-color: transparent;
-        border: 1px solid #DFE1E6;
-        border-radius: 6px;
-        padding: 8px 16px;
-        color: #42526E;
+
+    /* Primary button (Send) */
+    button[kind="primary"] {
+        background: #1F1F1F !important;
+        color: #FFFFFF !important;
+        border: 1px solid #1F1F1F !important;
+    }
+
+    button[kind="primary"]:hover {
+        background: #3A3A3A !important;
+        border-color: #3A3A3A !important;
+    }
+
+    /* Chat messages - ultra clean */
+    .user-message {
+        background: #F7F7F7;
+        padding: 12px 16px;
+        border-radius: 16px;
+        margin: 10px 0;
+        max-width: 75%;
+        margin-left: auto;
+        color: #1F1F1F;
+        font-size: 15px;
+        line-height: 1.5;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .assistant-message {
+        background: #FFFFFF;
+        padding: 12px 16px;
+        border-radius: 16px;
+        margin: 10px 0;
+        max-width: 75%;
+        color: #1F1F1F;
+        font-size: 15px;
+        line-height: 1.5;
+        border: 1px solid #E5E5E5;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .user-message strong,
+    .assistant-message strong {
+        color: #666;
+        font-weight: 500;
+        font-size: 13px;
+    }
+
+    /* Input area - minimal clean style */
+    .stTextInput > div > div > input {
+        border-radius: 24px;
+        padding: 12px 20px;
+        border: 1px solid #E5E5E5;
+        background: #FFFFFF;
+        font-size: 15px;
+        color: #1F1F1F;
+        transition: all 0.2s ease;
+    }
+
+    .stTextInput > div > div > input:focus {
+        border-color: #B0B0B0;
+        box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+    }
+
+    /* Chat input form - Grok style */
+    [data-testid="stForm"] {
+        border: 1px solid #D1D1D1;
+        border-radius: 28px;
+        padding: 4px;
+        background: #FFFFFF;
+        margin-bottom: 10px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* Hide form border styling */
+    [data-testid="stForm"] > div:first-child {
+        border: none !important;
+    }
+
+    /* Form columns layout - ensure proper alignment */
+    [data-testid="stForm"] [data-testid="column"] {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+
+    /* Style input inside form */
+    [data-testid="stForm"] .stTextInput {
+        margin-bottom: 0 !important;
+    }
+
+    [data-testid="stForm"] .stTextInput > div > div > input {
+        border: none !important;
+        padding: 10px 16px !important;
+        font-size: 15px !important;
+        background: transparent !important;
+    }
+
+    [data-testid="stForm"] .stTextInput > div > div > input:focus {
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    /* Button container alignment */
+    [data-testid="stForm"] [data-testid="column"]:last-child {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        padding-right: 4px !important;
+    }
+
+    /* Send button - Black circular up arrow (Grok style) */
+    [data-testid="stForm"] button {
+        background: #000000 !important;
+        color: #FFFFFF !important;
+        border-radius: 50% !important;
+        width: 40px !important;
+        height: 40px !important;
+        padding: 0 !important;
+        font-size: 20px !important;
+        font-weight: bold !important;
+        border: none !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        max-width: 40px !important;
+        max-height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.2s ease !important;
+        flex-shrink: 0 !important;
+    }
+
+    [data-testid="stForm"] button:hover {
+        background: #2A2A2A !important;
+        transform: scale(1.05);
+    }
+
+    [data-testid="stForm"] button:active {
+        background: #000000 !important;
+        transform: scale(0.95);
+    }
+
+    /* Clear chat button - minimal style */
+    button[key="clear_btn"] {
+        background: transparent !important;
+        border: 1px solid #E5E5E5 !important;
+        border-radius: 8px !important;
+        padding: 6px 12px !important;
+        font-size: 13px !important;
+        color: #666 !important;
+        transition: all 0.2s ease !important;
+        margin-top: 8px !important;
+    }
+
+    button[key="clear_btn"]:hover {
+        background: #F5F5F5 !important;
+        border-color: #D1D1D1 !important;
+        color: #1F1F1F !important;
+    }
+
+    /* Headers - clean typography */
+    h1, h2, h3, h4 {
+        color: #1F1F1F;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    h3 {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    /* Caption text */
+    .stCaption, [data-testid="stCaption"] {
+        color: #666;
+        font-size: 13px;
+    }
+
+    /* Expander */
+    [data-testid="stExpander"] {
+        background: #FFFFFF;
+        border: 1px solid #E5E5E5;
+        border-radius: 8px;
+    }
+
+    /* Select boxes and inputs - minimal */
+    .stSelectbox > div > div {
+        border-radius: 8px;
+        border: 1px solid #E5E5E5;
+        background: #FFFFFF;
+    }
+
+    .stMultiSelect > div > div {
+        border-radius: 8px;
+        border: 1px solid #E5E5E5;
+        background: #FFFFFF;
+    }
+
+    /* Metrics - clean cards */
+    [data-testid="stMetric"] {
+        background: #FFFFFF;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #E5E5E5;
+    }
+
+    [data-testid="stMetricLabel"] {
+        color: #666;
+        font-size: 13px;
         font-weight: 500;
     }
-    .stTabs [aria-selected="true"] {
-        background-color: #DEEBFF !important;
-        border-color: #0052CC !important;
-        color: #0052CC !important;
+
+    [data-testid="stMetricValue"] {
+        color: #1F1F1F;
+        font-size: 24px;
+        font-weight: 600;
     }
-    .footer-text {
-        position: fixed;
-        bottom: 80px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        color: #999;
-        font-size: 0.75rem;
-        padding: 10px;
-        background: linear-gradient(to top, rgba(255,255,255,0.95), transparent);
-        pointer-events: none;
-        z-index: 999;
+
+    /* Status badges - minimal */
+    .status-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .status-active {
+        background: #F0F0F0;
+        color: #1F1F1F;
+    }
+
+    .status-pending {
+        background: #F5F5F5;
+        color: #666;
+    }
+
+    .status-critical {
+        background: #F0F0F0;
+        color: #1F1F1F;
+    }
+
+    /* Dividers */
+    hr {
+        border: none;
+        border-top: 1px solid #E5E5E5;
+        margin: 16px 0;
+    }
+
+    /* Info/warning boxes - minimal */
+    .stInfo {
+        background: #F9F9F9;
+        border-left: 3px solid #D1D1D1;
+        color: #1F1F1F;
+    }
+
+    /* Markdown in center panel */
+    [data-testid="column"]:nth-child(2) {
+        padding: 24px 32px;
+    }
+
+    /* Welcome message styling */
+    [data-testid="column"]:nth-child(2) h3 {
+        color: #1F1F1F;
+        font-weight: 600;
+        font-size: 22px;
+    }
+
+    [data-testid="column"]:nth-child(2) p {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    /* Remove button emoji if needed */
+    div[data-testid="stButton"] > button::before {
+        content: none;
     }
 </style>
 """, unsafe_allow_html=True)
 
+# Define use cases
+USE_CASES = {
+    "Crisis Triage": {
+        "icon": "🚨",
+        "description": "Real-time crisis monitoring and high-risk case triage",
+        "contexts": ["Time Window", "Risk Level", "County", "Channel"],
+        "sample_queries": [
+            "Show me high-risk cases from the last hour",
+            "Are we experiencing a crisis surge?",
+            "What counties have the most imminent risk cases?",
+            "Average wait time for crisis calls"
+        ]
+    },
+    "Policy Q&A": {
+        "icon": "📋",
+        "description": "Search DHCS policies, AB 531, SB 326, Prop 1 guidelines",
+        "contexts": ["Policy Type", "Section", "County Requirements"],
+        "sample_queries": [
+            "What are crisis stabilization unit requirements under Prop 1?",
+            "AB 531 mobile crisis team standards",
+            "Staffing requirements for crisis centers",
+            "County compliance checklist for BHT"
+        ]
+    },
+    "BHOATR Reporting": {
+        "icon": "📊",
+        "description": "Generate behavioral health outcomes and accountability reports",
+        "contexts": ["Report Period", "County", "Metrics"],
+        "sample_queries": [
+            "Generate Q4 2024 report for Los Angeles County",
+            "Show year-over-year crisis call trends",
+            "Success rates by county",
+            "30-day readmission rates"
+        ]
+    },
+    "Licensing Assistant": {
+        "icon": "🏢",
+        "description": "Guide facilities through licensing and certification process",
+        "contexts": ["Facility Type", "County", "Status"],
+        "sample_queries": [
+            "Requirements to open residential treatment facility in Fresno",
+            "Crisis stabilization unit licensing checklist",
+            "Application timeline and steps",
+            "Required certifications for mobile crisis teams"
+        ]
+    },
+    "IP Compliance": {
+        "icon": "✅",
+        "description": "Review Integrated Plans for BHT compliance",
+        "contexts": ["County", "Section", "Compliance Status"],
+        "sample_queries": [
+            "Review Alameda County Integrated Plan",
+            "Check housing services compliance",
+            "Infrastructure timeline requirements",
+            "Budget justification checklist"
+        ]
+    },
+    "Infrastructure Tracking": {
+        "icon": "🏗️",
+        "description": "Monitor Prop 1 infrastructure projects and budgets",
+        "contexts": ["Project Type", "County", "Status", "Timeline"],
+        "sample_queries": [
+            "Show all crisis center construction projects",
+            "Projects behind schedule",
+            "Budget utilization by county",
+            "Completion timeline for new facilities"
+        ]
+    },
+    "Population Analytics": {
+        "icon": "👥",
+        "description": "Analyze target populations and service gaps",
+        "contexts": ["Population", "County", "Time Period"],
+        "sample_queries": [
+            "Justice-involved individuals crisis patterns",
+            "Homeless population service gaps",
+            "Youth transition-age crisis trends",
+            "Co-occurring disorder demographics"
+        ]
+    },
+    "Resource Allocation": {
+        "icon": "💰",
+        "description": "Optimize funding allocation and resource planning",
+        "contexts": ["Budget", "Priority", "Impact"],
+        "sample_queries": [
+            "Optimal allocation for $10M Prop 1 funds",
+            "ROI analysis for mobile crisis teams",
+            "Cost per successful intervention by county",
+            "High-impact investment opportunities"
+        ]
+    }
+}
+
+# Initialize session state
+if "current_use_case" not in st.session_state:
+    st.session_state.current_use_case = "Crisis Triage"
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+if "is_processing" not in st.session_state:
+    st.session_state.is_processing = False
+if "context_filters" not in st.session_state:
+    st.session_state.context_filters = {}
+if "sample_query" not in st.session_state:
+    st.session_state.sample_query = None
 
 def call_api(endpoint: str, data: dict = None, method: str = "POST", timeout: int = 60) -> dict:
-    """Call API endpoint with proper timeout and error handling"""
+    """Call API endpoint"""
     url = f"{API_BASE_URL}/{endpoint}"
     try:
-        if method == "GET":
-            response = requests.get(url, timeout=timeout)
-        else:
+        if method == "POST":
             response = requests.post(url, json=data, timeout=timeout)
-
+        else:
+            response = requests.get(url, params=data, timeout=timeout)
         response.raise_for_status()
         return response.json()
-    except requests.exceptions.Timeout:
-        st.error(f"API request timed out after {timeout} seconds. The AI agents may be processing a complex query.")
-        return None
-    except requests.exceptions.ConnectionError as e:
-        st.error(f"Connection Error: Unable to reach the API at {API_BASE_URL}. Please ensure the agent-api service is running.")
-        return None
     except requests.exceptions.RequestException as e:
         st.error(f"API Error: {str(e)}")
-        return None
+        return {"success": False, "error": str(e)}
 
+# Create 3-column layout matching wireframe
+col1, col2, col3 = st.columns([1, 2, 1])
 
-# Sidebar
-st.sidebar.markdown('<p class="main-header">🏥 DHCS BHT AI</p>', unsafe_allow_html=True)
-st.sidebar.markdown("**Behavioral Health Treatment Crisis Intake Assistant**")
-st.sidebar.markdown("---")
+# ============================================================================
+# LEFT PANEL: Use Case Navigation
+# ============================================================================
+with col1:
+    st.markdown("### 🏥 DHCS BHT Platform")
+    st.markdown("---")
 
-# Mode selection
-mode = st.sidebar.radio(
-    "Select Mode",
-    ["💬 Chat Assistant", "📊 Analytics Dashboard", "🚨 Triage Center", "💡 Recommendations", "📚 Knowledge Base"],
-    index=0
-)
+    st.markdown("**Use Cases**")
 
-st.sidebar.markdown("---")
-st.sidebar.markdown("### About")
-st.sidebar.info("""
-This AI assistant helps DHCS behavioral health administrators:
-- Query crisis intake data
-- Analyze trends and anomalies
-- Prioritize high-risk cases
-- Get operational recommendations
-- Access policy knowledge
+    for use_case, details in USE_CASES.items():
+        # Create button for each use case
+        button_class = "active" if use_case == st.session_state.current_use_case else ""
 
-**Note:** All data is synthetic for demonstration purposes.
-""")
-
-# Main content
-if mode == "💬 Chat Assistant":
-    # Initialize session state
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-    if "is_processing" not in st.session_state:
-        st.session_state.is_processing = False
-    if "query_history" not in st.session_state:
-        st.session_state.query_history = []
-
-    # Show top K queries if no chat history (cold start) - Cleaner layout
-    if len(st.session_state.messages) == 0:
-        # Center content with better spacing
-        st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown('<h2 style="text-align: center; font-weight: 600; color: #172B4D; margin-bottom: 12px;">What can I help you with today?</h2>', unsafe_allow_html=True)
-        st.markdown('<p style="text-align: center; color: #6B778C; margin-bottom: 40px;">Ask questions about crisis intake data across California counties</p>', unsafe_allow_html=True)
-
-        top_queries = get_top_queries_by_category()
-
-        # Create tabs for different categories - Atlassian style
-        tabs = st.tabs(list(top_queries.keys()))
-
-        for tab, (category, queries) in zip(tabs, top_queries.items()):
-            with tab:
-                st.markdown("<br>", unsafe_allow_html=True)
-                for query in queries:
-                    if st.button(query, key=f"query_{category}_{query[:20]}", use_container_width=True):
-                        st.session_state.selected_query = query
-                        st.rerun()
-                    st.markdown("<div style='margin: 8px 0;'></div>", unsafe_allow_html=True)
-
-    # Check if a query was selected from suggestions
-    if "selected_query" in st.session_state and not st.session_state.is_processing:
-        st.session_state.is_processing = True
-        st.rerun()
-
-    # Process the selected query
-    if st.session_state.is_processing and "selected_query" not in st.session_state and len(st.session_state.messages) > 0:
-        # Get the last user message (which was just added)
-        prompt = st.session_state.query_history[-1] if st.session_state.query_history else None
-
-        if prompt:
-            # Get AI response with spinner
-            with st.chat_message("assistant"):
-                with st.spinner("⏳ Processing your query..."):
-                    result = call_api("chat", {"message": prompt})
-
-                    if result and result.get("success"):
-                        response = result.get("response", "No response")
-                        st.markdown(response)
-
-                        # Show which agent was used
-                        agent_used = result.get("agent_used", "unknown")
-                        st.caption(f"_Agent used: {agent_used}_")
-
-                        # Add to chat history
-                        st.session_state.messages.append({"role": "assistant", "content": response})
-
-                        # Show raw data in expander
-                        with st.expander("View detailed results"):
-                            st.json(result)
-                    else:
-                        error_msg = "Sorry, I encountered an error processing your request."
-                        st.error(error_msg)
-                        st.session_state.messages.append({"role": "assistant", "content": error_msg})
-
-            st.session_state.is_processing = False
+        if st.button(
+            f"{details['icon']} {use_case}",
+            key=f"nav_{use_case}",
+            use_container_width=True
+        ):
+            st.session_state.current_use_case = use_case
+            st.session_state.messages = []  # Clear chat history on use case change
+            st.session_state.context_filters = {}
             st.rerun()
-    elif "selected_query" in st.session_state:
-        prompt = st.session_state.selected_query
-        del st.session_state.selected_query
-
-        # Add user message
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        st.session_state.query_history.append(prompt)
-        st.rerun()
-
-    # Show processing indicator BEFORE displaying chat if processing
-    if st.session_state.is_processing:
-        st.warning("⏳ Processing your query... Please wait. Do not click other buttons.")
-        st.stop()
-
-    # Display chat history
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-    # Show follow-up suggestions after the last assistant response
-    if len(st.session_state.messages) > 0 and st.session_state.messages[-1]["role"] == "assistant":
-        last_user_query = None
-        for i in range(len(st.session_state.messages) - 1, -1, -1):
-            if st.session_state.messages[i]["role"] == "user":
-                last_user_query = st.session_state.messages[i]["content"].lower()
-                break
-
-        if last_user_query:
-            # Generate context-aware follow-up questions
-            follow_ups = []
-
-            # Extract entities from last query
-            from query_suggestions import CA_COUNTIES, RISK_LEVELS, PROBLEMS, CHANNELS
-
-            # County-specific follow-ups
-            mentioned_county = None
-            for county in CA_COUNTIES:
-                if county.lower() in last_user_query:
-                    mentioned_county = county
-                    break
-
-            if mentioned_county:
-                follow_ups = [
-                    f"What's the average wait time in {mentioned_county}?",
-                    f"Show high-risk cases in {mentioned_county}",
-                    f"What are the most common problems in {mentioned_county}?"
-                ]
-            elif "high-risk" in last_user_query or "risk" in last_user_query:
-                follow_ups = [
-                    "Which counties have the most high-risk cases?",
-                    "Show suicidal ideation cases in the last hour",
-                    "What's the mobile team response time for high-risk cases?"
-                ]
-            elif "county" in last_user_query or "counties" in last_user_query:
-                follow_ups = [
-                    "Show me crisis calls for Los Angeles County",
-                    "What's the risk level distribution by county?",
-                    "Compare wait times across top 3 counties"
-                ]
-            elif "language" in last_user_query or "spanish" in last_user_query:
-                follow_ups = [
-                    "How many non-English crisis calls today?",
-                    "What languages are most requested?",
-                    "Spanish language call trends by county"
-                ]
-            elif "wait" in last_user_query or "response time" in last_user_query:
-                follow_ups = [
-                    "Which counties have the longest wait times?",
-                    "Compare wait times by channel type",
-                    "Show wait time trends over last 24 hours"
-                ]
-            else:
-                # Generic follow-ups
-                follow_ups = [
-                    "Show high-risk cases from the last hour",
-                    "Which counties have highest call volumes?",
-                    "What are the most common presenting problems?"
-                ]
-
-            if follow_ups:
-                st.markdown("---")
-                st.markdown("**💬 Related Questions:**")
-                cols = st.columns(3)
-                for idx, follow_up in enumerate(follow_ups[:3]):
-                    with cols[idx]:
-                        if st.button(follow_up, key=f"followup_{idx}", use_container_width=True):
-                            st.session_state.selected_query = follow_up
-                            st.rerun()
-
-    # Chat input - using Streamlit's native chat_input (cleaner ChatGPT-style)
-    if not st.session_state.is_processing:
-        if prompt := st.chat_input("Message DHCS AI Assistant", disabled=st.session_state.is_processing):
-            st.session_state.is_processing = True
-
-            # Add user message
-            st.session_state.messages.append({"role": "user", "content": prompt})
-            st.session_state.query_history.append(prompt)
-
-            with st.chat_message("user"):
-                st.markdown(prompt)
-
-            # Get AI response
-            with st.chat_message("assistant"):
-                with st.spinner("⏳ Processing your query..."):
-                    result = call_api("chat", {"message": prompt})
-
-                    if result and result.get("success"):
-                        response = result.get("response", "No response")
-                        st.markdown(response)
-
-                        # Show which agent was used
-                        agent_used = result.get("agent_used", "unknown")
-                        st.caption(f"_Agent used: {agent_used}_")
-
-                        # Add to chat history
-                        st.session_state.messages.append({"role": "assistant", "content": response})
-
-                        # Show raw data in expander
-                        with st.expander("View detailed results"):
-                            st.json(result)
-                    else:
-                        error_msg = "Sorry, I encountered an error processing your request."
-                        st.error(error_msg)
-                        st.session_state.messages.append({"role": "assistant", "content": error_msg})
-
-            st.session_state.is_processing = False
-            st.rerun()
-
-    # Footer - Clean ChatGPT style
-    st.markdown("""
-    <div class='footer-text'>
-        Powered by OpenAI GPT-4 · LangGraph · Apache Pinot · ChromaDB
-    </div>
-    """, unsafe_allow_html=True)
-
-elif mode == "📊 Analytics Dashboard":
-    st.markdown('<p class="main-header">Analytics Dashboard</p>', unsafe_allow_html=True)
-
-    col1, col2 = st.columns([3, 1])
-
-    with col2:
-        time_window = st.selectbox("Time Window", [15, 30, 60, 120, 240], index=2)
-        analysis_type = st.selectbox("Analysis Type", ["comprehensive", "trends", "surge", "anomalies"])
-
-        if st.button("Run Analysis", type="primary"):
-            st.session_state.analytics_result = call_api("analytics", {
-                "analysis_type": analysis_type,
-                "time_window_minutes": time_window
-            })
-
-    with col1:
-        if "analytics_result" in st.session_state and st.session_state.analytics_result:
-            result = st.session_state.analytics_result
-
-            # Surge Detection
-            if "surge_detection" in result:
-                surge = result["surge_detection"]
-                col_a, col_b, col_c = st.columns(3)
-
-                with col_a:
-                    st.metric(
-                        "Current Rate",
-                        f"{surge.get('current_rate_per_minute', 0):.1f}/min",
-                        delta=f"{surge.get('surge_multiplier', 0):.1f}x baseline"
-                    )
-
-                with col_b:
-                    st.metric(
-                        "Baseline Rate",
-                        f"{surge.get('baseline_rate_per_minute', 0):.1f}/min"
-                    )
-
-                with col_c:
-                    severity = surge.get('severity', 'normal')
-                    color = {"normal": "🟢", "elevated": "🟡", "high": "🟠", "critical": "🔴"}
-                    st.metric("Surge Status", f"{color.get(severity, '⚪')} {severity.upper()}")
-
-                if surge.get("is_surge_detected"):
-                    st.warning(f"⚠️ {surge.get('recommendation', 'Surge detected')}")
-
-            st.markdown("---")
-
-            # Insights
-            if "insights" in result:
-                st.markdown("### 💡 Key Insights")
-                st.markdown(result["insights"])
-
-            # County Trends
-            if "county_trends" in result and result["county_trends"].get("top_counties"):
-                st.markdown("### 🗺️ Top Counties by Volume")
-                df_counties = pd.DataFrame(result["county_trends"]["top_counties"])
-                fig = px.bar(df_counties, x="county", y="total_events", color="high_risk_count",
-                             title="Event Volume by County")
-                st.plotly_chart(fig, use_container_width=True)
-
-            # Risk Distribution
-            if "risk_trends" in result and result["risk_trends"].get("distribution"):
-                st.markdown("### ⚠️ Risk Level Distribution")
-                df_risk = pd.DataFrame(result["risk_trends"]["distribution"])
-                fig = px.pie(df_risk, names="risk_level", values="count",
-                             title="Events by Risk Level")
-                st.plotly_chart(fig, use_container_width=True)
-
-            # Detailed results
-            with st.expander("View Raw Analytics Data"):
-                st.json(result)
-        else:
-            st.info("👆 Click 'Run Analysis' to generate analytics")
-
-elif mode == "🚨 Triage Center":
-    st.markdown('<p class="main-header">Triage Center</p>', unsafe_allow_html=True)
-    st.markdown("Prioritized high-risk cases requiring attention")
-
-    col1, col2 = st.columns([3, 1])
-
-    with col2:
-        time_window = st.selectbox("Time Window (minutes)", [15, 30, 60, 120], index=1)
-        limit = st.slider("Max Cases", 10, 50, 20)
-
-        if st.button("Run Triage", type="primary"):
-            st.session_state.triage_result = call_api("triage", {
-                "time_window_minutes": time_window,
-                "limit": limit
-            })
-
-    with col1:
-        if "triage_result" in st.session_state and st.session_state.triage_result:
-            result = st.session_state.triage_result
-
-            if result.get("status") == "success":
-                # Summary metrics
-                col_a, col_b, col_c = st.columns(3)
-                with col_a:
-                    st.metric("High-Risk Events", result.get("total_high_risk_events", 0))
-                with col_b:
-                    st.metric("Time Window", f"{time_window} min")
-                with col_c:
-                    st.metric("Status", "🟢 Active")
-
-                # Triage summary
-                if result.get("triage_summary"):
-                    st.markdown("### 📋 Summary")
-                    st.info(result["triage_summary"])
-
-                # Recommendations
-                if result.get("recommendations"):
-                    st.markdown("### 💡 Recommended Actions")
-                    st.markdown(result["recommendations"])
-
-                # Prioritized cases table
-                if result.get("prioritized_cases"):
-                    st.markdown("### 🔴 Priority Cases")
-                    df_cases = pd.DataFrame(result["prioritized_cases"])
-
-                    # Format for display
-                    display_df = df_cases[[
-                        "priority_score", "risk_level", "county", "presenting_problem",
-                        "suicidal_ideation", "homicidal_ideation", "minutes_ago"
-                    ]].copy()
-
-                    display_df.columns = [
-                        "Priority", "Risk", "County", "Problem",
-                        "SI", "HI", "Minutes Ago"
-                    ]
-
-                    st.dataframe(
-                        display_df,
-                        use_container_width=True,
-                        hide_index=True
-                    )
-
-                with st.expander("View Raw Triage Data"):
-                    st.json(result)
-            else:
-                st.warning(result.get("message", "No high-risk events found"))
-        else:
-            st.info("👆 Click 'Run Triage' to identify high-risk cases")
-
-elif mode == "💡 Recommendations":
-    st.markdown('<p class="main-header">Operational Recommendations</p>', unsafe_allow_html=True)
-
-    col1, col2 = st.columns([3, 1])
-
-    with col2:
-        focus_area = st.selectbox(
-            "Focus Area",
-            ["comprehensive", "staffing", "equity", "efficiency"]
-        )
-        time_window = st.selectbox("Time Window", [30, 60, 120, 240], index=1)
-
-        if st.button("Generate Recommendations", type="primary"):
-            st.session_state.rec_result = call_api("recommendations", {
-                "focus_area": focus_area,
-                "time_window_minutes": time_window
-            })
-
-    with col1:
-        if "rec_result" in st.session_state and st.session_state.rec_result:
-            result = st.session_state.rec_result
-
-            st.markdown(f"### 📌 {focus_area.title()} Recommendations")
-            st.markdown(result.get("recommendations", "No recommendations available"))
-
-            # Supporting data
-            if result.get("supporting_data"):
-                with st.expander("View Supporting Data"):
-                    data = result["supporting_data"]
-
-                    if data.get("county_stats"):
-                        st.markdown("**County Statistics**")
-                        st.dataframe(pd.DataFrame(data["county_stats"]))
-
-                    if data.get("channel_stats"):
-                        st.markdown("**Channel Statistics**")
-                        st.dataframe(pd.DataFrame(data["channel_stats"]))
-
-                    if data.get("language_stats"):
-                        st.markdown("**Language Statistics**")
-                        st.dataframe(pd.DataFrame(data["language_stats"]))
-        else:
-            st.info("👆 Select a focus area and generate recommendations")
-
-elif mode == "📚 Knowledge Base":
-    st.markdown('<p class="main-header">DHCS Policy Knowledge Base</p>', unsafe_allow_html=True)
-
-    # Knowledge base stats
-    stats = call_api("knowledge/stats", method="GET")
-    if stats:
-        col1, col2 = st.columns([2, 1])
-        with col1:
-            st.metric("Documents in Knowledge Base", stats.get("document_count", 0))
-        with col2:
-            if st.button("Refresh Stats"):
-                st.rerun()
 
     st.markdown("---")
 
-    # Search interface
-    st.markdown("### 🔍 Search Policies & Procedures")
-    query = st.text_input("Enter your search query", placeholder="e.g., mobile crisis team response time")
-    n_results = st.slider("Number of results", 1, 10, 5)
+    # System status
+    st.markdown("**System Status**")
+    st.markdown('<span class="status-badge status-active">● All Systems Operational</span>', unsafe_allow_html=True)
+    st.caption("Last updated: " + datetime.now().strftime("%I:%M %p"))
 
-    if st.button("Search", type="primary") or query:
-        if query:
-            result = call_api("knowledge/search", {"query": query, "n_results": n_results})
+# ============================================================================
+# CENTER PANEL: Chat Interface
+# ============================================================================
+with col2:
+    current_use_case = st.session_state.current_use_case
+    use_case_details = USE_CASES[current_use_case]
 
-            if result and result.get("results"):
-                st.success(f"Found {result.get('count', 0)} relevant documents")
+    # Header
+    st.markdown(f"## {use_case_details['icon']} {current_use_case}")
+    st.caption(use_case_details['description'])
+    st.markdown("---")
 
-                for i, doc in enumerate(result["results"], 1):
-                    with st.expander(f"Result {i} - {doc.get('metadata', {}).get('source', 'Unknown Source')}"):
-                        st.markdown(f"**Section:** {doc.get('metadata', {}).get('section', 'N/A')}")
-                        st.markdown(f"**Category:** {doc.get('metadata', {}).get('category', 'N/A')}")
-                        st.markdown("---")
-                        st.markdown(doc.get("content", ""))
-                        if doc.get("distance") is not None:
-                            st.caption(f"Relevance score: {1 - doc['distance']:.2f}")
-            else:
-                st.warning("No results found")
+    # Chat history display
+    chat_container = st.container()
+    with chat_container:
+        if len(st.session_state.messages) == 0:
+            # Welcome message for current use case
+            st.markdown(f"""
+            <div style='text-align: center; padding: 40px 20px;'>
+                <h3>Welcome to {current_use_case}</h3>
+                <p style='color: #666;'>{use_case_details['description']}</p>
+                <p style='margin-top: 20px; font-size: 14px;'>
+                    👉 Try one of the sample queries from the right panel, or type your own question below.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            # Display chat history
+            for msg in st.session_state.messages:
+                if msg["role"] == "user":
+                    st.markdown(f"""
+                    <div class='user-message'>
+                        <strong>You:</strong><br/>
+                        {msg['content']}
+                    </div>
+                    """, unsafe_allow_html=True)
+                else:
+                    st.markdown(f"""
+                    <div class='assistant-message'>
+                        <strong>AI Assistant:</strong><br/>
+                        {msg['content']}
+                    </div>
+                    """, unsafe_allow_html=True)
+
+    # Processing indicator
+    if st.session_state.is_processing:
+        st.info("⏳ Processing your query... Please wait.")
+
+    # Chat input - Grok style with up arrow
+    st.markdown("---")
+
+    # Create form for chat input
+    with st.form(key="chat_form", clear_on_submit=True):
+        col_input, col_btn = st.columns([30, 1])
+
+        with col_input:
+            user_input = st.text_input(
+                "Message",
+                placeholder=f"Ask about {current_use_case.lower()}...",
+                label_visibility="collapsed",
+                key="chat_input_field"
+            )
+
+        with col_btn:
+            submitted = st.form_submit_button("↑", use_container_width=True)
+
+    # Clear button below input (small, minimal)
+    if st.button("🗑️ Clear Chat", help="Clear chat history", key="clear_btn"):
+        st.session_state.messages = []
+        st.rerun()
+
+    # Handle sample query from right panel
+    if 'sample_query' in st.session_state and st.session_state.sample_query and not st.session_state.is_processing:
+        user_input = st.session_state.sample_query
+        st.session_state.sample_query = None  # Clear it
+        st.session_state.is_processing = True
+
+        # Add user message
+        st.session_state.messages.append({
+            "role": "user",
+            "content": user_input
+        })
+
+        # Call API based on use case
+        with st.spinner("Processing..."):
+            try:
+                # Map use case to API endpoint
+                if current_use_case == "Crisis Triage":
+                    result = call_api("chat", {"message": user_input})
+                    response = result.get("response", "No response available")
+
+                elif current_use_case == "Policy Q&A":
+                    result = call_api("knowledge/search", {"query": user_input, "n_results": 3})
+                    # Format knowledge base results
+                    if result.get("results"):
+                        response_parts = []
+                        for i, item in enumerate(result["results"][:3], 1):
+                            content = item.get("content", "")
+                            source = item.get("metadata", {}).get("source", "Unknown")
+                            section = item.get("metadata", {}).get("section", "")
+                            response_parts.append(f"**Source {i}: {source}**\n{f'Section: {section}' if section else ''}\n\n{content}")
+                        response = "\n\n---\n\n".join(response_parts)
+                    else:
+                        response = "No relevant policy information found."
+
+                elif current_use_case == "BHOATR Reporting":
+                    result = call_api("analytics", {"analysis_type": "comprehensive", "time_window_minutes": 60})
+                    response = result.get("analysis", result.get("response", "Analysis not available"))
+
+                elif current_use_case == "IP Compliance":
+                    # For IP Compliance, use knowledge base to get requirements
+                    result = call_api("knowledge/search", {"query": f"Integrated Plan requirements {user_input}", "n_results": 3})
+                    if result.get("results"):
+                        response = "**Integrated Plan Compliance Requirements:**\n\n"
+                        for item in result["results"][:2]:
+                            content = item.get("content", "")
+                            response += f"{content}\n\n"
+                        response += f"\n\n**Your Query:** {user_input}\n\nTo perform a full compliance review, please provide your Integrated Plan document for detailed analysis."
+                    else:
+                        response = "Integrated Plan requirements not found. Please ensure the knowledge base is populated."
+
+                else:
+                    # Default for other use cases - use chat endpoint
+                    result = call_api("chat", {"message": f"[{current_use_case}] {user_input}"})
+                    response = result.get("response", "No response available")
+
+                # Add response to chat
+                if response:
+                    st.session_state.messages.append({
+                        "role": "assistant",
+                        "content": str(response)
+                    })
+                else:
+                    raise Exception("Empty response from API")
+
+            except Exception as e:
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": f"Sorry, I encountered an error processing your request: {str(e)}\n\nPlease ensure:\n- The API service is running\n- The knowledge base is populated\n- The query is valid for this use case"
+                })
+
+            st.session_state.is_processing = False
+            st.rerun()
+
+    # Handle form submission
+    if submitted and user_input and not st.session_state.is_processing:
+        st.session_state.is_processing = True
+
+        # Add user message
+        st.session_state.messages.append({
+            "role": "user",
+            "content": user_input
+        })
+
+        # Call API based on use case
+        with st.spinner("Processing..."):
+            try:
+                # Map use case to API endpoint
+                if current_use_case == "Crisis Triage":
+                    result = call_api("chat", {"message": user_input})
+                    response = result.get("response", "No response available")
+
+                elif current_use_case == "Policy Q&A":
+                    result = call_api("knowledge/search", {"query": user_input, "n_results": 3})
+                    # Format knowledge base results
+                    if result.get("results"):
+                        response_parts = []
+                        for i, item in enumerate(result["results"][:3], 1):
+                            content = item.get("content", "")
+                            source = item.get("metadata", {}).get("source", "Unknown")
+                            section = item.get("metadata", {}).get("section", "")
+                            response_parts.append(f"**Source {i}: {source}**\n{f'Section: {section}' if section else ''}\n\n{content}")
+                        response = "\n\n---\n\n".join(response_parts)
+                    else:
+                        response = "No relevant policy information found."
+
+                elif current_use_case == "BHOATR Reporting":
+                    result = call_api("analytics", {"analysis_type": "comprehensive", "time_window_minutes": 60})
+                    response = result.get("analysis", result.get("response", "Analysis not available"))
+
+                elif current_use_case == "IP Compliance":
+                    # For IP Compliance, use knowledge base to get requirements
+                    result = call_api("knowledge/search", {"query": f"Integrated Plan requirements {user_input}", "n_results": 3})
+                    if result.get("results"):
+                        response = "**Integrated Plan Compliance Requirements:**\n\n"
+                        for item in result["results"][:2]:
+                            content = item.get("content", "")
+                            response += f"{content}\n\n"
+                        response += f"\n\n**Your Query:** {user_input}\n\nTo perform a full compliance review, please provide your Integrated Plan document for detailed analysis."
+                    else:
+                        response = "Integrated Plan requirements not found. Please ensure the knowledge base is populated."
+
+                else:
+                    # Default for other use cases - use chat endpoint
+                    result = call_api("chat", {"message": f"[{current_use_case}] {user_input}"})
+                    response = result.get("response", "No response available")
+
+                # Add response to chat
+                if response:
+                    st.session_state.messages.append({
+                        "role": "assistant",
+                        "content": str(response)
+                    })
+                else:
+                    raise Exception("Empty response from API")
+
+            except Exception as e:
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": f"Sorry, I encountered an error processing your request: {str(e)}\n\nPlease ensure:\n- The API service is running\n- The knowledge base is populated\n- The query is valid for this use case"
+                })
+
+            st.session_state.is_processing = False
+            st.rerun()
+
+# ============================================================================
+# RIGHT PANEL: Context & Suggestions
+# ============================================================================
+with col3:
+    st.markdown("### Context")
+
+    # Context filters based on use case
+    with st.expander("🎯 Filters", expanded=True):
+        contexts = use_case_details['contexts']
+
+        for context in contexts:
+            if context == "Time Window":
+                st.selectbox("Time Window", ["Last Hour", "Last 24 Hours", "Last Week", "Last Month"], key="filter_time")
+            elif context == "Risk Level":
+                st.multiselect("Risk Level", ["Low", "Moderate", "High", "Imminent"], key="filter_risk")
+            elif context == "County":
+                st.selectbox("County", ["All Counties", "Los Angeles", "San Diego", "Orange", "Fresno", "Sacramento"], key="filter_county")
+            elif context == "Channel":
+                st.multiselect("Channel", ["988 Call", "Mobile Team", "Walk-in", "ER Referral"], key="filter_channel")
+            elif context == "Policy Type":
+                st.selectbox("Policy Type", ["All Policies", "AB 531", "SB 326", "Prop 1", "DHCS Guidelines"], key="filter_policy")
+            elif context == "Report Period":
+                st.selectbox("Report Period", ["Q1 2024", "Q2 2024", "Q3 2024", "Q4 2024", "YTD 2024"], key="filter_period")
+            elif context == "Facility Type":
+                st.selectbox("Facility Type", ["All Types", "Crisis Stabilization", "Residential Treatment", "Mobile Crisis"], key="filter_facility")
+            elif context == "Status":
+                st.selectbox("Status", ["All", "Active", "Pending", "Completed"], key="filter_status")
+            elif context == "Project Type":
+                st.selectbox("Project Type", ["All Projects", "Crisis Centers", "Housing", "Workforce"], key="filter_project")
+            elif context == "Population":
+                st.selectbox("Population", ["All", "Justice-Involved", "Homeless", "Youth", "Co-occurring"], key="filter_population")
+
+    # Sample queries
+    st.markdown("---")
+    st.markdown("### 💡 Sample Queries")
+
+    for query in use_case_details['sample_queries']:
+        if st.button(query, key=f"sample_{query[:20]}", use_container_width=True):
+            # Store the sample query to be processed
+            st.session_state.sample_query = query
+            st.rerun()
+
+    # Quick stats (context-aware based on use case)
+    st.markdown("---")
+    st.markdown("### 📈 Quick Stats")
+
+    if current_use_case == "Crisis Triage":
+        st.metric("Active Cases", "47", delta="↑ 8")
+        st.metric("High Risk", "12", delta="-2")
+        st.metric("Avg Wait", "14 min", delta="↓ 3")
+    elif current_use_case == "Infrastructure Tracking":
+        st.metric("Active Projects", "23", delta="↑ 2")
+        st.metric("On Schedule", "18", delta="")
+        st.metric("Budget Used", "38%", delta="↑ 5%")
+    else:
+        st.metric("Total Queries", "0", delta="")
+        st.caption("Stats will appear after queries")

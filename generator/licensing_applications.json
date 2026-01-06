@@ -1,0 +1,272 @@
+[
+  {
+    "application_id": "d9c430f7-d8ea-4bd9-8d37-4e3d90f9c0a7",
+    "facility_name": "Facility 1",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "San Diego",
+    "license_status": "Conditional License Issued",
+    "capacity": 21,
+    "submission_date": "2025-04-11"
+  },
+  {
+    "application_id": "1af4f4fc-5643-494a-aa07-3ad458883604",
+    "facility_name": "Facility 2",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "license_status": "Conditional License Issued",
+    "capacity": 35,
+    "submission_date": "2025-09-12"
+  },
+  {
+    "application_id": "88d85d20-916b-4352-a8d6-731d7b73dfa5",
+    "facility_name": "Facility 3",
+    "facility_type": "Residential Treatment Facility",
+    "county": "San Diego",
+    "license_status": "Under Review",
+    "capacity": 17,
+    "submission_date": "2025-03-22"
+  },
+  {
+    "application_id": "e300629a-c237-49f4-a5a2-8726a4d6eb14",
+    "facility_name": "Facility 4",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "license_status": "Conditional License Issued",
+    "capacity": 38,
+    "submission_date": "2025-02-26"
+  },
+  {
+    "application_id": "156f0585-edd2-44a1-8699-767a635943d4",
+    "facility_name": "Facility 5",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "license_status": "Under Review",
+    "capacity": 37,
+    "submission_date": "2025-11-19"
+  },
+  {
+    "application_id": "6ac57f54-b83d-458a-ad1e-cd8530a08344",
+    "facility_name": "Facility 6",
+    "facility_type": "Residential Treatment Facility",
+    "county": "Orange",
+    "license_status": "Conditional License Issued",
+    "capacity": 23,
+    "submission_date": "2025-09-25"
+  },
+  {
+    "application_id": "70a09ebf-1c90-426e-b91e-ae1d95b1fdaa",
+    "facility_name": "Facility 7",
+    "facility_type": "Residential Treatment Facility",
+    "county": "San Diego",
+    "license_status": "Conditional License Issued",
+    "capacity": 16,
+    "submission_date": "2025-11-03"
+  },
+  {
+    "application_id": "cefbe81d-8a95-4db7-8ca9-7e0426d2404a",
+    "facility_name": "Facility 8",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "license_status": "Application Submitted",
+    "capacity": 31,
+    "submission_date": "2025-11-28"
+  },
+  {
+    "application_id": "e9130d39-4066-4756-ad0c-959580b0ba6f",
+    "facility_name": "Facility 9",
+    "facility_type": "Residential Treatment Facility",
+    "county": "San Diego",
+    "license_status": "Under Review",
+    "capacity": 23,
+    "submission_date": "2025-01-18"
+  },
+  {
+    "application_id": "872c1fa1-8aa6-442e-b14c-59c0d77f9af6",
+    "facility_name": "Facility 10",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "San Diego",
+    "license_status": "Under Review",
+    "capacity": 38,
+    "submission_date": "2025-03-24"
+  },
+  {
+    "application_id": "4fd85794-a6e8-4beb-9627-989c59f33b5b",
+    "facility_name": "Facility 11",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Los Angeles",
+    "license_status": "Conditional License Issued",
+    "capacity": 25,
+    "submission_date": "2025-03-14"
+  },
+  {
+    "application_id": "171d777a-d033-409a-a671-c966307ef124",
+    "facility_name": "Facility 12",
+    "facility_type": "Residential Treatment Facility",
+    "county": "Los Angeles",
+    "license_status": "Conditional License Issued",
+    "capacity": 21,
+    "submission_date": "2025-02-20"
+  },
+  {
+    "application_id": "0f5c6bb5-59d5-4893-8f35-00903a1c1976",
+    "facility_name": "Facility 13",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Orange",
+    "license_status": "Conditional License Issued",
+    "capacity": 36,
+    "submission_date": "2025-10-08"
+  },
+  {
+    "application_id": "9d67bdb0-6abf-4778-a30c-369406a76392",
+    "facility_name": "Facility 14",
+    "facility_type": "Residential Treatment Facility",
+    "county": "Orange",
+    "license_status": "Application Submitted",
+    "capacity": 17,
+    "submission_date": "2025-01-13"
+  },
+  {
+    "application_id": "96cb4265-6aaf-4121-803f-ea2dab80499b",
+    "facility_name": "Facility 15",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Los Angeles",
+    "license_status": "Conditional License Issued",
+    "capacity": 24,
+    "submission_date": "2025-09-04"
+  },
+  {
+    "application_id": "981f70f1-759a-4ec9-97c2-e398e73ffefc",
+    "facility_name": "Facility 16",
+    "facility_type": "Residential Treatment Facility",
+    "county": "Los Angeles",
+    "license_status": "Conditional License Issued",
+    "capacity": 16,
+    "submission_date": "2025-10-26"
+  },
+  {
+    "application_id": "fc6bbba3-c3df-4e7b-ab5c-afad67953a2c",
+    "facility_name": "Facility 17",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "license_status": "Conditional License Issued",
+    "capacity": 24,
+    "submission_date": "2025-07-21"
+  },
+  {
+    "application_id": "9014ab64-63d8-4d31-83d0-d50129569f3c",
+    "facility_name": "Facility 18",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Orange",
+    "license_status": "Application Submitted",
+    "capacity": 38,
+    "submission_date": "2025-11-27"
+  },
+  {
+    "application_id": "ac9977cb-db22-425b-a7c6-fc71d733c273",
+    "facility_name": "Facility 19",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Los Angeles",
+    "license_status": "Application Submitted",
+    "capacity": 24,
+    "submission_date": "2025-08-20"
+  },
+  {
+    "application_id": "5401f6b8-98ed-4370-97ad-5c7d45e2285f",
+    "facility_name": "Facility 20",
+    "facility_type": "Residential Treatment Facility",
+    "county": "Orange",
+    "license_status": "Conditional License Issued",
+    "capacity": 24,
+    "submission_date": "2025-03-22"
+  },
+  {
+    "application_id": "c9dceac4-2f29-4bf0-9a19-9599c10801e5",
+    "facility_name": "Facility 21",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Los Angeles",
+    "license_status": "Application Submitted",
+    "capacity": 19,
+    "submission_date": "2025-04-28"
+  },
+  {
+    "application_id": "9f058a22-5f8b-4765-a5dc-87b5b5c21494",
+    "facility_name": "Facility 22",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "license_status": "Application Submitted",
+    "capacity": 38,
+    "submission_date": "2025-09-08"
+  },
+  {
+    "application_id": "e29d02b3-7c35-430d-ae1c-675a393a0cb4",
+    "facility_name": "Facility 23",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "license_status": "Application Submitted",
+    "capacity": 29,
+    "submission_date": "2025-06-18"
+  },
+  {
+    "application_id": "6cbed17e-c235-47c6-ad83-925c9c4e4e88",
+    "facility_name": "Facility 24",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "San Diego",
+    "license_status": "Under Review",
+    "capacity": 39,
+    "submission_date": "2025-03-30"
+  },
+  {
+    "application_id": "bbcd240c-ec5f-4284-9ba8-c16ee2293c18",
+    "facility_name": "Facility 25",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "license_status": "Conditional License Issued",
+    "capacity": 31,
+    "submission_date": "2025-03-19"
+  },
+  {
+    "application_id": "81ad3c3d-e89a-4c5e-84b8-f7f4e68c76fa",
+    "facility_name": "Facility 26",
+    "facility_type": "Residential Treatment Facility",
+    "county": "San Diego",
+    "license_status": "Application Submitted",
+    "capacity": 39,
+    "submission_date": "2025-08-26"
+  },
+  {
+    "application_id": "0e8cf9de-7bc9-4dc3-bf98-1bc2587cfd38",
+    "facility_name": "Facility 27",
+    "facility_type": "Residential Treatment Facility",
+    "county": "Orange",
+    "license_status": "Under Review",
+    "capacity": 29,
+    "submission_date": "2025-09-02"
+  },
+  {
+    "application_id": "0f4bf2ba-cb93-4579-a15c-d2533b790308",
+    "facility_name": "Facility 28",
+    "facility_type": "Residential Treatment Facility",
+    "county": "San Diego",
+    "license_status": "Under Review",
+    "capacity": 22,
+    "submission_date": "2025-05-11"
+  },
+  {
+    "application_id": "9c9b6241-0e53-4d9c-95f0-4cc811df992e",
+    "facility_name": "Facility 29",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Alameda",
+    "license_status": "Conditional License Issued",
+    "capacity": 19,
+    "submission_date": "2025-08-24"
+  },
+  {
+    "application_id": "8a50aadb-be65-4cdf-831a-84804d2901cb",
+    "facility_name": "Facility 30",
+    "facility_type": "Crisis Stabilization Unit",
+    "county": "Los Angeles",
+    "license_status": "Under Review",
+    "capacity": 35,
+    "submission_date": "2025-05-31"
+  }
+]
