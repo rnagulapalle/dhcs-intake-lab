@@ -3,11 +3,10 @@ Multi-Agent Orchestrator using LangGraph
 Coordinates between specialized agents for comprehensive crisis intake support
 """
 import logging
-from typing import Dict, Any, TypedDict, Annotated, Sequence
+from typing import Dict, Any, TypedDict, Annotated, Sequence, Optional, TYPE_CHECKING
 from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
 from langgraph.graph import StateGraph, END
-from langchain_openai import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 
 from agents.core.config import settings
 from agents.core.query_agent import QueryAgent
@@ -15,7 +14,24 @@ from agents.core.analytics_agent import AnalyticsAgent
 from agents.core.triage_agent import TriageAgent
 from agents.core.recommendations_agent import RecommendationsAgent
 
+# Conditional import to avoid circular dependencies
+if TYPE_CHECKING:
+    from platform.model_gateway import ModelGateway
+
 logger = logging.getLogger(__name__)
+
+
+def _get_gateway(gateway: Optional["ModelGateway"] = None) -> "ModelGateway":
+    """
+    Get ModelGateway instance.
+
+    All LLM access MUST go through the gateway - no direct provider imports allowed.
+    """
+    if gateway is not None:
+        return gateway
+
+    from platform.model_gateway import get_default_gateway
+    return get_default_gateway()
 
 
 class AgentState(TypedDict):
@@ -37,12 +53,8 @@ class AgentOrchestrator:
     Routes user requests to appropriate specialized agents
     """
 
-    def __init__(self):
-        self.llm = ChatOpenAI(
-            model=settings.agent_model,
-            temperature=0.3,
-            openai_api_key=settings.openai_api_key
-        )
+    def __init__(self, gateway: Optional["ModelGateway"] = None):
+        self._gateway = _get_gateway(gateway)
 
         # Initialize specialized agents
         self.query_agent = QueryAgent()
@@ -126,7 +138,8 @@ Return ONLY the category name, nothing else."""
             ("human", "{user_input}")
         ])
 
-        chain = prompt | self.llm
+        # Use gateway for LLM access
+        chain = prompt | self._gateway.get_underlying_llm()
         response = chain.invoke({"user_input": user_input})
 
         intent = response.content.strip().lower()

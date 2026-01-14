@@ -1,0 +1,280 @@
+{
+  "run_metadata": {
+    "timestamp": "2026-01-09T22:20:56.095688",
+    "run_id": "20260109_221405",
+    "test_type": "POC_parity_validation"
+  },
+  "execution_stats": {
+    "total_questions": 10,
+    "successful": 10,
+    "failed": 0,
+    "success_rate": 1.0
+  },
+  "parity_stats": {
+    "parity_passed": 8,
+    "parity_failed": 2,
+    "parity_pass_rate": 0.8,
+    "avg_citation_count": 8.0,
+    "questions_with_citations": 8
+  },
+  "quality_stats": {
+    "avg_quality_score": 8.440000000000001,
+    "quality_pass_rate": 1.0
+  },
+  "validations": [
+    {
+      "question_id": 1,
+      "parity_checks": {
+        "statute_summary_present": true,
+        "policy_summary_present": true,
+        "final_summary_present": true,
+        "statute_citations_count": 0,
+        "policy_citations_count": 8,
+        "chunk_citations_present": true,
+        "statute_chunks_retrieved": 0,
+        "policy_chunks_retrieved": 0
+      },
+      "issues": [
+        "No statute chunks retrieved",
+        "No policy chunks retrieved"
+      ],
+      "passes_parity": true
+    },
+    {
+      "question_id": 2,
+      "parity_checks": {
+        "statute_summary_present": true,
+        "policy_summary_present": true,
+        "final_summary_present": true,
+        "statute_citations_count": 3,
+        "policy_citations_count": 7,
+        "chunk_citations_present": true,
+        "statute_chunks_retrieved": 0,
+        "policy_chunks_retrieved": 0
+      },
+      "issues": [
+        "No statute chunks retrieved",
+        "No policy chunks retrieved"
+      ],
+      "passes_parity": true
+    },
+    {
+      "question_id": 3,
+      "parity_checks": {
+        "statute_summary_present": true,
+        "policy_summary_present": true,
+        "final_summary_present": true,
+        "statute_citations_count": 4,
+        "policy_citations_count": 9,
+        "chunk_citations_present": true,
+        "statute_chunks_retrieved": 0,
+        "policy_chunks_retrieved": 0
+      },
+      "issues": [
+        "No statute chunks retrieved",
+        "No policy chunks retrieved"
+      ],
+      "passes_parity": true
+    },
+    {
+      "question_id": 4,
+      "parity_checks": {
+        "statute_summary_present": true,
+        "policy_summary_present": true,
+        "final_summary_present": true,
+        "statute_citations_count": 3,
+        "policy_citations_count": 9,
+        "chunk_citations_present": true,
+        "statute_chunks_retrieved": 0,
+        "policy_chunks_retrieved": 0
+      },
+      "issues": [
+        "No statute chunks retrieved",
+        "No policy chunks retrieved"
+      ],
+      "passes_parity": true
+    },
+    {
+      "question_id": 5,
+      "parity_checks": {
+        "statute_summary_present": true,
+        "policy_summary_present": true,
+        "final_summary_present": true,
+        "statute_citations_count": 0,
+        "policy_citations_count": 9,
+        "chunk_citations_present": true,
+        "statute_chunks_retrieved": 0,
+        "policy_chunks_retrieved": 0
+      },
+      "issues": [
+        "No statute chunks retrieved",
+        "No policy chunks retrieved"
+      ],
+      "passes_parity": true
+    },
+    {
+      "question_id": 6,
+      "parity_checks": {
+        "statute_summary_present": true,
+        "policy_summary_present": true,
+        "final_summary_present": true,
+        "statute_citations_count": 0,
+        "policy_citations_count": 4,
+        "chunk_citations_present": true,
+        "statute_chunks_retrieved": 0,
+        "policy_chunks_retrieved": 0
+      },
+      "issues": [
+        "No statute chunks retrieved",
+        "No policy chunks retrieved"
+      ],
+      "passes_parity": true
+    },
+    {
+      "question_id": 7,
+      "parity_checks": {
+        "statute_summary_present": true,
+        "policy_summary_present": true,
+        "final_summary_present": true,
+        "statute_citations_count": 0,
+        "policy_citations_count": 0,
+        "chunk_citations_present": false,
+        "statute_chunks_retrieved": 0,
+        "policy_chunks_retrieved": 0
+      },
+      "issues": [
+        "No chunk citations ([S#] or [P#]) found in summaries",
+        "No statute chunks retrieved",
+        "No policy chunks retrieved"
+      ],
+      "passes_parity": false
+    },
+    {
+      "question_id": 8,
+      "parity_checks": {
+        "statute_summary_present": true,
+        "policy_summary_present": true,
+        "final_summary_present": true,
+        "statute_citations_count": 3,
+        "policy_citations_count": 10,
+        "chunk_citations_present": true,
+        "statute_chunks_retrieved": 0,
+        "policy_chunks_retrieved": 0
+      },
+      "issues": [
+        "No statute chunks retrieved",
+        "No policy chunks retrieved"
+      ],
+      "passes_parity": true
+    },
+    {
+      "question_id": 9,
+      "parity_checks": {
+        "statute_summary_present": true,
+        "policy_summary_present": true,
+        "final_summary_present": true,
+        "statute_citations_count": 4,
+        "policy_citations_count": 7,
+        "chunk_citations_present": true,
+        "statute_chunks_retrieved": 0,
+        "policy_chunks_retrieved": 0
+      },
+      "issues": [
+        "No statute chunks retrieved",
+        "No policy chunks retrieved"
+      ],
+      "passes_parity": true
+    },
+    {
+      "question_id": 10,
+      "parity_checks": {
+        "statute_summary_present": true,
+        "policy_summary_present": true,
+        "final_summary_present": true,
+        "statute_citations_count": 0,
+        "policy_citations_count": 0,
+        "chunk_citations_present": false,
+        "statute_chunks_retrieved": 0,
+        "policy_chunks_retrieved": 0
+      },
+      "issues": [
+        "No chunk citations ([S#] or [P#]) found in summaries",
+        "No statute chunks retrieved",
+        "No policy chunks retrieved"
+      ],
+      "passes_parity": false
+    }
+  ],
+  "results": [
+    {
+      "question_id": 1,
+      "success": true,
+      "passes_parity": true,
+      "quality_score": 8.4,
+      "passes_review": true
+    },
+    {
+      "question_id": 2,
+      "success": true,
+      "passes_parity": true,
+      "quality_score": 8.4,
+      "passes_review": true
+    },
+    {
+      "question_id": 3,
+      "success": true,
+      "passes_parity": true,
+      "quality_score": 8.2,
+      "passes_review": true
+    },
+    {
+      "question_id": 4,
+      "success": true,
+      "passes_parity": true,
+      "quality_score": 8.6,
+      "passes_review": true
+    },
+    {
+      "question_id": 5,
+      "success": true,
+      "passes_parity": true,
+      "quality_score": 8.5,
+      "passes_review": true
+    },
+    {
+      "question_id": 6,
+      "success": true,
+      "passes_parity": true,
+      "quality_score": 8.3,
+      "passes_review": true
+    },
+    {
+      "question_id": 7,
+      "success": true,
+      "passes_parity": false,
+      "quality_score": 8.5,
+      "passes_review": true
+    },
+    {
+      "question_id": 8,
+      "success": true,
+      "passes_parity": true,
+      "quality_score": 8.6,
+      "passes_review": true
+    },
+    {
+      "question_id": 9,
+      "success": true,
+      "passes_parity": true,
+      "quality_score": 8.5,
+      "passes_review": true
+    },
+    {
+      "question_id": 10,
+      "success": true,
+      "passes_parity": false,
+      "quality_score": 8.4,
+      "passes_review": true
+    }
+  ]
+}

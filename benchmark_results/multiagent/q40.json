@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "final_summary": "## Compliance Summary\n\n### Bottom Line\nCounties must provide mental health services, supportive services, and substance use disorder (SUD) treatment services under the BHSS funded Adult and Older Adult System of Care (Non-FSP) program, and begin documenting these services immediately.\n\n### Statutory Basis\nW&I Code \u00a7 5899 mandates counties to provide a range of services including mental health and SUD treatment as part of the BHSS program. W&I Code \u00a7 5891 further defines the scope of services, ensuring comprehensive care for adults and older adults. W&I Code \u00a7 5830 emphasizes accessibility and service delivery standards for these populations.\n\n### Policy Guidance\nThe DHCS Policy Manual specifies that counties \"must\" provide coordinated care based on individual needs and \"should\" document specific service types offered. It is also required that counties adhere to standards of care for FSP programs, which includes outpatient mental health and SUD services.\n\n### Action Items for County\n1. Identify and document all service types provided under the BHSS funded Adult and Older Adult System of Care (by December 2023).\n2. Ensure that all services align with the required standards of care as outlined in the policy manual (ongoing).\n3. Begin collecting data on the service types offered to ensure compliance with BHSS requirements (immediate).\n4. Review and update funding allocations to ensure they meet the needs of the services provided (by January 2024).\n\n### Open Questions / Ambiguities\n- Clarification is needed on the criteria for determining service intensity for individuals transitioning from FSP ICM to outpatient services.\n- The reporting process for counties regarding specific service types under the BHSS program requires further guidance from DHCS.",
+  "final_response": "\u2705 **Good Quality** (Score: 8.8/10)\n\n## Compliance Summary\n\n### Bottom Line\nCounties must provide mental health services, supportive services, and substance use disorder (SUD) treatment services under the BHSS funded Adult and Older Adult System of Care (Non-FSP) program, and begin documenting these services immediately.\n\n### Statutory Basis\nW&I Code \u00a7 5899 mandates counties to provide a range of services including mental health and SUD treatment as part of the BHSS program. W&I Code \u00a7 5891 further defines the scope of services, ensuring comprehensive care for adults and older adults. W&I Code \u00a7 5830 emphasizes accessibility and service delivery standards for these populations.\n\n### Policy Guidance\nThe DHCS Policy Manual specifies that counties \"must\" provide coordinated care based on individual needs and \"should\" document specific service types offered. It is also required that counties adhere to standards of care for FSP programs, which includes outpatient mental health and SUD services.\n\n### Action Items for County\n1. Identify and document all service types provided under the BHSS funded Adult and Older Adult System of Care (by December 2023).\n2. Ensure that all services align with the required standards of care as outlined in the policy manual (ongoing).\n3. Begin collecting data on the service types offered to ensure compliance with BHSS requirements (immediate).\n4. Review and update funding allocations to ensure they meet the needs of the services provided (by January 2024).\n\n### Open Questions / Ambiguities\n- Clarification is needed on the criteria for determining service intensity for individuals transitioning from FSP ICM to outpatient services.\n- The reporting process for counties regarding specific service types under the BHSS program requires further guidance from DHCS.\n\n---\n\n**Processing Metadata:**\n- Priority: High\n- Statute Confidence: Low\n- Policy Confidence: Low\n- Relevant Statutes: W&I Code \u00a7 5830, W&I Code \u00a7 5887, W&I Code \u00a7 5891, W&I Code \u00a7 5899\n- Revision Count: 0\n\n**Quality Issues Noted:**\n- Action item 1 could specify the exact documentation format required.\n- Open questions could be more detailed regarding the expected outcomes.",
+  "action_items": [
+    "Identify and document all service types provided under the BHSS funded Adult and Older Adult System of Care (by December 2023).",
+    "Ensure that all services align with the required standards of care as outlined in the policy manual (ongoing).",
+    "Begin collecting data on the service types offered to ensure compliance with BHSS requirements (immediate).",
+    "Review and update funding allocations to ensure they meet the needs of the services provided (by January 2024)."
+  ],
+  "priority": "High",
+  "quality_score": 8.8,
+  "passes_review": true,
+  "metadata": {
+    "statute_confidence": "Low",
+    "policy_confidence": "Low",
+    "relevant_statutes": [
+      "W&I Code \u00a7 5830",
+      "W&I Code \u00a7 5887",
+      "W&I Code \u00a7 5891",
+      "W&I Code \u00a7 5899"
+    ],
+    "revision_count": 0,
+    "quality_issues": [
+      "Action item 1 could specify the exact documentation format required.",
+      "Open questions could be more detailed regarding the expected outcomes."
+    ],
+    "quality_suggestions": [
+      "Clarify the documentation format in action item 1 to enhance specificity.",
+      "Provide more context in open questions to guide future discussions."
+    ],
+    "statute_chunks_retrieved": 10,
+    "policy_chunks_retrieved": 10
+  }
+}

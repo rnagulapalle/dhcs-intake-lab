@@ -1,0 +1,85 @@
+# =============================================================================
+# BHT Platform Docker Ignore
+# =============================================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+.eggs/
+*.egg-info/
+*.egg
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# Test and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Documentation (keep docs/ but not generated)
+*.md
+!README.md
+!docs/DEVELOPER_GUIDE.md
+
+# Build artifacts
+build/
+dist/
+*.whl
+
+# Logs and data (generated at runtime)
+logs/
+*.log
+*.jsonl
+
+# Local data stores (mounted as volumes)
+chroma_data/
+*.db
+*.sqlite3
+
+# Secrets (never include)
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Benchmark and results (large files)
+benchmark_results/
+results/
+*.json
+!data/**/*.json
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Node (if any frontend)
+node_modules/
+
+# Docker (don't include docker files in context unnecessarily)
+Dockerfile*
+docker-compose*.yml
+.dockerignore

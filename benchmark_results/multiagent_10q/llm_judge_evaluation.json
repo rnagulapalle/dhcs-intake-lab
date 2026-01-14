@@ -1,0 +1,188 @@
+{
+  "total_evaluated": 10,
+  "avg_llm_judge_score": 72.0,
+  "avg_system_quality_score": 8.61,
+  "avg_ground_truth_score": 68.0,
+  "evaluations": [
+    {
+      "question_id": 44,
+      "ground_truth_score": 50.0,
+      "system_quality_score": 8.4,
+      "llm_judge_score": 55,
+      "llm_judge_justification": "The response provides a structured approach to implementing assertive field-based SUD treatment services, including action items and timelines. However, it lacks specific citations from the BHSA Policy Manual and does not fully address the funding sources or existing and new programs as requested. The response is moderately comprehensive but could benefit from more detailed guidance and statutory references.",
+      "strengths": [
+        "Clear and organized presentation of action items and timelines.",
+        "Addresses the need for collaboration with local services and data-informed outreach."
+      ],
+      "weaknesses": [
+        "Lacks specific citations from the BHSA Policy Manual.",
+        "Does not detail existing and new programs or funding sources.",
+        "Misses comprehensive coverage of all aspects of the question."
+      ],
+      "alignment_analysis": "The score aligns with the ground truth of 50/100 as both reflect a moderate response that is structured and partially addresses the question but lacks specificity and comprehensive detail."
+    },
+    {
+      "question_id": 325,
+      "ground_truth_score": 60.0,
+      "system_quality_score": 8.8,
+      "llm_judge_score": 75,
+      "llm_judge_justification": "The response accurately identifies relevant statutes and provides specific, actionable guidance for county staff, including a clear set of action items with deadlines. It includes citations from the W&I Code and addresses the question comprehensively. However, it could benefit from more detailed guidance on metrics and effectiveness measures.",
+      "strengths": [
+        "Accurately identifies relevant statutes and policy requirements.",
+        "Provides specific, actionable guidance with clear deadlines.",
+        "Includes exact citations from the W&I Code.",
+        "Addresses the question comprehensively and is well-organized."
+      ],
+      "weaknesses": [
+        "Lacks detailed guidance on specific metrics for assessing gaps.",
+        "Does not provide comprehensive guidance on measuring outreach effectiveness."
+      ],
+      "alignment_analysis": "The score is higher than the ground truth score of 60/100 because the response is well-organized, comprehensive, and includes specific action items and citations. However, it aligns with the ground truth in recognizing the need for more detailed guidance on certain aspects."
+    },
+    {
+      "question_id": 119,
+      "ground_truth_score": 50.0,
+      "system_quality_score": 8.5,
+      "llm_judge_score": 55,
+      "llm_judge_justification": "The response identifies some relevant policy guidance and provides actionable steps for counties, but it lacks specific statutory citations and misses key details about the intended outcomes. The organization is clear, but the response could benefit from more comprehensive coverage of the requirements.",
+      "strengths": [
+        "Provides actionable guidance for county staff.",
+        "Clear and well-organized structure.",
+        "Includes a list of action items for counties."
+      ],
+      "weaknesses": [
+        "Lacks specific statutory citations.",
+        "Misses key details about the intended outcomes.",
+        "Does not comprehensively address all aspects of the question."
+      ],
+      "alignment_analysis": "The score aligns closely with the ground truth score of 50/100, as both evaluations recognize the response's partial coverage of requirements and lack of specificity in certain areas."
+    },
+    {
+      "question_id": 114,
+      "ground_truth_score": 70.0,
+      "system_quality_score": 8.6,
+      "llm_judge_score": 85,
+      "llm_judge_justification": "The response accurately identifies relevant statutes and policy requirements, providing specific and actionable guidance for county staff. It includes exact citations and addresses all aspects of the question comprehensively. The organization is clear and easy to follow, with no significant inaccuracies.",
+      "strengths": [
+        "Accurate identification of relevant statutes and policy requirements.",
+        "Specific, actionable guidance for county staff.",
+        "Includes exact citations from the W&I Code and policy manual.",
+        "Comprehensive coverage of the question.",
+        "Clear and well-organized presentation."
+      ],
+      "weaknesses": [
+        "Could provide more detail on what constitutes an 'innovative' program.",
+        "Lacks specific examples or case studies of innovative programs."
+      ],
+      "alignment_analysis": "The score aligns with the ground truth score of 70/100, but I rated it higher due to the comprehensive and well-organized nature of the response, which effectively addresses the question and provides actionable guidance."
+    },
+    {
+      "question_id": 242,
+      "ground_truth_score": 70.0,
+      "system_quality_score": 8.6,
+      "llm_judge_score": 55,
+      "llm_judge_justification": "The response provides some relevant policy guidance and actionable items but lacks specific citations to the relevant statutes or policy manual sections for the Children's System of Care. It also focuses heavily on FSP programs, which is not the primary focus of the question. The organization is clear, but the response does not fully address the specific services provided in the non-FSP Children's System of Care.",
+      "strengths": [
+        "Provides actionable guidance for county staff.",
+        "Includes clear action items with timelines."
+      ],
+      "weaknesses": [
+        "Lacks specific citations related to the Children's System of Care.",
+        "Focuses on FSP programs, which are not the primary focus of the question.",
+        "Does not comprehensively address the specific services provided in the non-FSP context."
+      ],
+      "alignment_analysis": "My score is lower than the ground truth score of 70/100 because the response does not adequately address the specific services provided in the non-FSP Children's System of Care, which is the main focus of the question."
+    },
+    {
+      "question_id": 197,
+      "ground_truth_score": 70.0,
+      "system_quality_score": 8.6,
+      "llm_judge_score": 75,
+      "llm_judge_justification": "The response accurately identifies relevant statutes and provides actionable guidance for county staff, including specific action items and statutory citations. However, it could be improved by providing more detailed guidance on the reporting process for EBPs and CDEPs and addressing the open questions more comprehensively.",
+      "strengths": [
+        "Accurate identification of relevant statutes and policy requirements.",
+        "Specific, actionable guidance for county staff.",
+        "Includes exact citations from the W&I Code.",
+        "Clear and well-organized presentation."
+      ],
+      "weaknesses": [
+        "Lacks detailed guidance on reporting specific EBPs and CDEPs.",
+        "Does not comprehensively address open questions or ambiguities."
+      ],
+      "alignment_analysis": "The score aligns closely with the ground truth score of 70/100. The response meets most of the criteria for a strong response but falls short in providing comprehensive guidance on certain aspects, justifying a slightly higher score than the ground truth."
+    },
+    {
+      "question_id": 40,
+      "ground_truth_score": 75.0,
+      "system_quality_score": 8.8,
+      "llm_judge_score": 80,
+      "llm_judge_justification": "The response accurately identifies relevant statutes and policy requirements, providing specific and actionable guidance for county staff. It includes exact citations and addresses the question comprehensively. However, there are minor areas for improvement, such as addressing open questions more thoroughly.",
+      "strengths": [
+        "Accurately identifies relevant statutes and policy requirements.",
+        "Provides specific, actionable guidance for county staff.",
+        "Includes exact citations from the W&I Code and policy manual.",
+        "Addresses all aspects of the question comprehensively."
+      ],
+      "weaknesses": [
+        "Open questions and ambiguities could be addressed more thoroughly.",
+        "Some guidance could be more detailed, particularly regarding service intensity needs."
+      ],
+      "alignment_analysis": "The score aligns closely with the ground truth score of 75/100, as both evaluations recognize the response's strengths in providing comprehensive and accurate information, while also noting areas for minor improvement."
+    },
+    {
+      "question_id": 10,
+      "ground_truth_score": 75.0,
+      "system_quality_score": 8.6,
+      "llm_judge_score": 80,
+      "llm_judge_justification": "The response accurately identifies relevant statutes and policy requirements, providing specific and actionable guidance for county staff. It includes exact citations and addresses the question comprehensively. The organization is clear and easy to follow, with no significant errors. However, some areas could benefit from more detailed guidance, particularly regarding the open questions and ambiguities.",
+      "strengths": [
+        "Accurate identification of relevant statutes and policy requirements.",
+        "Specific and actionable guidance for county staff.",
+        "Includes exact citations from the W&I Code.",
+        "Comprehensive coverage of the question.",
+        "Clear and well-organized presentation."
+      ],
+      "weaknesses": [
+        "Could provide more detailed guidance on open questions and ambiguities.",
+        "Lacks specific examples or detailed strategies for diversity initiatives."
+      ],
+      "alignment_analysis": "The score of 80 aligns closely with the ground truth score of 75, reflecting the response's strengths in accuracy and comprehensiveness, while acknowledging areas for improvement in specificity and detail."
+    },
+    {
+      "question_id": 233,
+      "ground_truth_score": 75.0,
+      "system_quality_score": 8.6,
+      "llm_judge_score": 80,
+      "llm_judge_justification": "The response accurately identifies relevant policy requirements and provides actionable guidance for county staff. It includes specific action items and a clear framework for addressing the question comprehensively. However, it lacks specific citations from the W&I Code or policy manual sections, which would enhance the response's precision.",
+      "strengths": [
+        "Provides clear and actionable guidance for county staff.",
+        "Addresses the question comprehensively with specific action items.",
+        "Organized in a clear and easy-to-follow manner."
+      ],
+      "weaknesses": [
+        "Lacks specific citations from the W&I Code or policy manual sections.",
+        "Does not identify any specific statutory requirements, which could be relevant.",
+        "Open questions and ambiguities section could be more detailed."
+      ],
+      "alignment_analysis": "The score aligns closely with the ground truth score of 75/100. The response is strong in terms of guidance and organization but could be improved with more precise citations and addressing statutory requirements."
+    },
+    {
+      "question_id": 93,
+      "ground_truth_score": 85.0,
+      "system_quality_score": 8.6,
+      "llm_judge_score": 80,
+      "llm_judge_justification": "The response accurately identifies the need to provide all FDA-approved MAT options and offers specific guidance for county staff, including action items and timelines. However, it lacks exact statutory citations and could benefit from more detailed guidance on operationalizing mobile field-based programs.",
+      "strengths": [
+        "Clearly identifies the requirement to provide all FDA-approved MAT options.",
+        "Provides actionable guidance with specific timelines for implementation.",
+        "Addresses the need for outreach and engagement with high-risk populations."
+      ],
+      "weaknesses": [
+        "Lacks exact statutory citations for the requirements mentioned.",
+        "Could provide more detailed guidance on the operational aspects of mobile field-based programs.",
+        "Does not specify any 'other' forms of MAT beyond the standard options."
+      ],
+      "alignment_analysis": "The score aligns closely with the ground truth score of 85/100. The response is strong in providing actionable guidance but falls short in providing statutory citations and detailed operational guidance, justifying a slightly lower score."
+    }
+  ]
+}

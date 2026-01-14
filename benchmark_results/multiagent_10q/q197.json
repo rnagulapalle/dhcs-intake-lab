@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "final_summary": "## Compliance Summary\n\n### Bottom Line\nCounties must include evidence-based practices (EBPs) and community-defined evidence practices (CDEPs) from the biennial list in their Early Intervention (EI) programs.\n\n### Statutory Basis\nW&I Code \u00a7 5899 mandates that counties utilize EBPs and CDEPs in behavioral health programs, including EI. W&I Code \u00a7 5892 emphasizes the necessity of these practices for effective service delivery in EI programs. W&I Code \u00a7 14184 further supports the integration of EBPs into mental health services.\n\n### Policy Guidance\nCounties must ensure their EI programs include EBPs or CDEPs as per the biennial list and document the selection process. They must also allocate at least 51% of BHSS funding to EI programs, with a minimum of 51% of those funds directed to individuals aged 25 and younger. While counties should consider innovative practices, the use of EBPs and CDEPs is a requirement.\n\n### Action Items for County\n1. Review the current EI program to confirm the inclusion of EBPs and CDEPs from the biennial list (by January 2024).\n2. Document the selection process for EBPs and CDEPs utilized in the EI program and maintain records (ongoing).\n3. Ensure funding allocations are compliant with the 51% requirement for EI programs and for individuals aged 25 and younger (by March 2024).\n4. Engage community organizations to identify effective practices and enhance the evidence base for new strategies (ongoing).\n\n### Open Questions / Ambiguities\n- Clarification is needed on how to report specific EBPs and CDEPs used in EI programs.\n- Further guidance from DHCS may be required to standardize the process for determining qualifying innovative practices for BHSS funding.",
+  "final_response": "\u2705 **Good Quality** (Score: 8.6/10)\n\n## Compliance Summary\n\n### Bottom Line\nCounties must include evidence-based practices (EBPs) and community-defined evidence practices (CDEPs) from the biennial list in their Early Intervention (EI) programs.\n\n### Statutory Basis\nW&I Code \u00a7 5899 mandates that counties utilize EBPs and CDEPs in behavioral health programs, including EI. W&I Code \u00a7 5892 emphasizes the necessity of these practices for effective service delivery in EI programs. W&I Code \u00a7 14184 further supports the integration of EBPs into mental health services.\n\n### Policy Guidance\nCounties must ensure their EI programs include EBPs or CDEPs as per the biennial list and document the selection process. They must also allocate at least 51% of BHSS funding to EI programs, with a minimum of 51% of those funds directed to individuals aged 25 and younger. While counties should consider innovative practices, the use of EBPs and CDEPs is a requirement.\n\n### Action Items for County\n1. Review the current EI program to confirm the inclusion of EBPs and CDEPs from the biennial list (by January 2024).\n2. Document the selection process for EBPs and CDEPs utilized in the EI program and maintain records (ongoing).\n3. Ensure funding allocations are compliant with the 51% requirement for EI programs and for individuals aged 25 and younger (by March 2024).\n4. Engage community organizations to identify effective practices and enhance the evidence base for new strategies (ongoing).\n\n### Open Questions / Ambiguities\n- Clarification is needed on how to report specific EBPs and CDEPs used in EI programs.\n- Further guidance from DHCS may be required to standardize the process for determining qualifying innovative practices for BHSS funding.\n\n---\n\n**Processing Metadata:**\n- Priority: High\n- Statute Confidence: Low\n- Policy Confidence: Low\n- Relevant Statutes: W&I Code \u00a7 14184, W&I Code \u00a7 5892, W&I Code \u00a7 5899\n- Revision Count: 0\n\n**Quality Issues Noted:**\n- Action item 2 lacks a specific timeline for documentation.\n- The bottom line could be more actionable.",
+  "action_items": [
+    "Review the current EI program to confirm the inclusion of EBPs and CDEPs from the biennial list (by January 2024).",
+    "Document the selection process for EBPs and CDEPs utilized in the EI program and maintain records (ongoing).",
+    "Ensure funding allocations are compliant with the 51% requirement for EI programs and for individuals aged 25 and younger (by March 2024).",
+    "Engage community organizations to identify effective practices and enhance the evidence base for new strategies (ongoing)."
+  ],
+  "priority": "High",
+  "quality_score": 8.6,
+  "passes_review": true,
+  "metadata": {
+    "statute_confidence": "Low",
+    "policy_confidence": "Low",
+    "relevant_statutes": [
+      "W&I Code \u00a7 14184",
+      "W&I Code \u00a7 5892",
+      "W&I Code \u00a7 5899"
+    ],
+    "revision_count": 0,
+    "quality_issues": [
+      "Action item 2 lacks a specific timeline for documentation.",
+      "The bottom line could be more actionable."
+    ],
+    "quality_suggestions": [
+      "Add a specific deadline for action item 2 to ensure timely documentation.",
+      "Rephrase the bottom line to start with a direct action verb, such as 'Ensure counties include...'"
+    ],
+    "statute_chunks_retrieved": 10,
+    "policy_chunks_retrieved": 10
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "final_summary": "## Compliance Summary\n\n### Bottom Line\nCounties must identify and document any additional priority uses of BHSS Early Intervention (EI) funds beyond those listed in the Policy Manual. This documentation must include justification for each priority and metrics to assess effectiveness.\n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nAccording to the Policy Manual:\n- Counties must establish and administer an EI program (Section 7.A.1).\n- At least 51% of BHSS funding must be allocated to EI programs (Section 7.A.2).\n- Counties are required to report on planned and actual expenditures in the Behavioral Health Outcomes, Accountability, and Transparency Report (BHOATR) (Section 7.A.4).\n- Counties are encouraged to engage with community organizations to identify additional priority uses for EI funds (Section 7.A.5).\n\n### Action Items for County\n1. Conduct community engagement sessions to gather input on potential additional priority uses for EI funds (by December 2023).\n2. Document any identified additional priorities, including justification and metrics for effectiveness, and prepare for inclusion in the next BHOATR submission (by January 2024).\n3. Establish a process for ongoing review of additional priorities to ensure they align with community needs and behavioral health trends (ongoing).\n4. Develop a framework for assessing the effectiveness of newly identified priorities, seeking guidance from DHCS if needed (by February 2024).\n\n### Open Questions / Ambiguities\n- Clarification is needed on what constitutes \"additional priority uses\" beyond those listed in Section A.7.2.\n- Guidance on acceptable metrics and evaluation methods for assessing the effectiveness of newly identified priorities is not explicitly detailed. Further direction from DHCS may be required.",
+  "final_response": "\u2705 **Good Quality** (Score: 8.6/10)\n\n## Compliance Summary\n\n### Bottom Line\nCounties must identify and document any additional priority uses of BHSS Early Intervention (EI) funds beyond those listed in the Policy Manual. This documentation must include justification for each priority and metrics to assess effectiveness.\n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nAccording to the Policy Manual:\n- Counties must establish and administer an EI program (Section 7.A.1).\n- At least 51% of BHSS funding must be allocated to EI programs (Section 7.A.2).\n- Counties are required to report on planned and actual expenditures in the Behavioral Health Outcomes, Accountability, and Transparency Report (BHOATR) (Section 7.A.4).\n- Counties are encouraged to engage with community organizations to identify additional priority uses for EI funds (Section 7.A.5).\n\n### Action Items for County\n1. Conduct community engagement sessions to gather input on potential additional priority uses for EI funds (by December 2023).\n2. Document any identified additional priorities, including justification and metrics for effectiveness, and prepare for inclusion in the next BHOATR submission (by January 2024).\n3. Establish a process for ongoing review of additional priorities to ensure they align with community needs and behavioral health trends (ongoing).\n4. Develop a framework for assessing the effectiveness of newly identified priorities, seeking guidance from DHCS if needed (by February 2024).\n\n### Open Questions / Ambiguities\n- Clarification is needed on what constitutes \"additional priority uses\" beyond those listed in Section A.7.2.\n- Guidance on acceptable metrics and evaluation methods for assessing the effectiveness of newly identified priorities is not explicitly detailed. Further direction from DHCS may be required.\n\n---\n\n**Processing Metadata:**\n- Priority: High\n- Statute Confidence: Low\n- Policy Confidence: Low\n- Relevant Statutes: None identified\n- Revision Count: 0\n\n**Quality Issues Noted:**\n- Action item 3 lacks a specific timeline for the ongoing review process.\n- Clarification needed on the definition of 'additional priority uses' in the Open Questions section.",
+  "action_items": [
+    "Conduct community engagement sessions to gather input on potential additional priority uses for EI funds (by December 2023).",
+    "Document any identified additional priorities, including justification and metrics for effectiveness, and prepare for inclusion in the next BHOATR submission (by January 2024).",
+    "Establish a process for ongoing review of additional priorities to ensure they align with community needs and behavioral health trends (ongoing).",
+    "Develop a framework for assessing the effectiveness of newly identified priorities, seeking guidance from DHCS if needed (by February 2024)."
+  ],
+  "priority": "High",
+  "quality_score": 8.6,
+  "passes_review": true,
+  "metadata": {
+    "statute_confidence": "Low",
+    "policy_confidence": "Low",
+    "relevant_statutes": [],
+    "revision_count": 0,
+    "quality_issues": [
+      "Action item 3 lacks a specific timeline for the ongoing review process.",
+      "Clarification needed on the definition of 'additional priority uses' in the Open Questions section."
+    ],
+    "quality_suggestions": [
+      "Specify a timeline for the ongoing review process in action item 3.",
+      "Provide a clearer definition or examples of 'additional priority uses' to avoid ambiguity."
+    ],
+    "statute_chunks_retrieved": 10,
+    "policy_chunks_retrieved": 10
+  }
+}

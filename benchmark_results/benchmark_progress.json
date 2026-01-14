@@ -1,0 +1,56 @@
+{
+  "timestamp": "2026-01-09T14:55:11.465140",
+  "questions_completed": 5,
+  "results": [
+    {
+      "question_id": 44,
+      "question": "1. Please describe the county behavioral health system\u2019s approach and timeline(s)\nto support and imp...",
+      "ground_truth_score": 50.0,
+      "score_quartile": "Q1",
+      "poc_success": true,
+      "poc_time_seconds": 37.10852289199829,
+      "multiagent_success": true,
+      "multiagent_time_seconds": 26.278319120407104
+    },
+    {
+      "question_id": 114,
+      "question": "1. Does the county\u2019s plan include the development of innovative programs or pilots?\n[Yes/No radio bu...",
+      "ground_truth_score": 70.0,
+      "score_quartile": "Q2",
+      "poc_success": true,
+      "poc_time_seconds": 28.08389711380005,
+      "multiagent_success": true,
+      "multiagent_time_seconds": 26.870103120803833
+    },
+    {
+      "question_id": 242,
+      "question": "2. Please describe the specific services provided [narrative box]...",
+      "ground_truth_score": 70.0,
+      "score_quartile": "Q2",
+      "poc_success": true,
+      "poc_time_seconds": 29.541404247283936,
+      "multiagent_success": true,
+      "multiagent_time_seconds": 22.379496097564697
+    },
+    {
+      "question_id": 40,
+      "question": "For each program or service type that is part of the county\u2019s BHSS funded Adult and\nOlder Adult Syst...",
+      "ground_truth_score": 75.0,
+      "score_quartile": "Q3",
+      "poc_success": true,
+      "poc_time_seconds": 26.436060190200806,
+      "multiagent_success": true,
+      "multiagent_time_seconds": 21.896254062652588
+    },
+    {
+      "question_id": 93,
+      "question": "What forms of MAT will the county provide utilizing the strategies selected above?\na. Buprenorphine\n...",
+      "ground_truth_score": 85.0,
+      "score_quartile": "Q4",
+      "poc_success": true,
+      "poc_time_seconds": 29.456690788269043,
+      "multiagent_success": true,
+      "multiagent_time_seconds": 19.749794006347656
+    }
+  ]
+}

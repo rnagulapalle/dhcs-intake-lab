@@ -1,0 +1,33 @@
+{
+  "success": true,
+  "final_summary": "## Compliance Summary\n\n### Bottom Line\nCounties must develop and implement a comprehensive plan for assertive field-based SUD treatment services by July 1, 2029, leveraging existing and new programs, and ensuring rapid access to FDA-approved MAT.\n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nAccording to the DHCS Policy Manual, counties must:\n- Provide rapid access to all FDA-approved MAT (Section 7.B.6.2).\n- Establish initiatives for targeted outreach, mobile field-based programs, and open-access clinics.\n- Prioritize high-risk individuals, including those with overdose reversals, homelessness, or justice involvement (Section 7.B.6.3).\n- Collaborate with existing programs and consider integrating SUD services into Full Service Partnership (FSP) programs (Sections 7.B.6.4 & 7.B.6.5).\n\n### Action Items for County\n1. **Develop a Comprehensive Plan**: Create a detailed plan outlining existing and new programs for assertive field-based SUD treatment, including funding sources and expected timelines (by December 2025).\n2. **Identify and Leverage Existing Programs**: List current programs that support assertive field-based SUD services and assess their capacity for expansion or integration (by March 2026).\n3. **Establish New Initiatives**: Design and propose new programs, ensuring they meet the outlined requirements and prioritize high-risk individuals (by June 2027).\n4. **Coordinate with Local Services**: Document partnerships with local emergency services to enhance outreach and rapid referrals (ongoing, with initial documentation by July 2028).\n5. **Monitor and Report Progress**: Set up a system to track outreach efforts, program locations, and implementation progress, with a report due by June 2029.\n\n### Open Questions / Ambiguities\n- Clarification is needed on the criteria for identifying \"high-risk\" individuals for outreach prioritization.\n- Further guidance on the extent of collaboration required with existing programs would be beneficial.\n- Details on funding mechanisms for new initiatives outside of BHSA dollars are unclear.",
+  "final_response": "\u2705 **Good Quality** (Score: 8.1/10)\n\n## Compliance Summary\n\n### Bottom Line\nCounties must develop and implement a comprehensive plan for assertive field-based SUD treatment services by July 1, 2029, leveraging existing and new programs, and ensuring rapid access to FDA-approved MAT.\n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nAccording to the DHCS Policy Manual, counties must:\n- Provide rapid access to all FDA-approved MAT (Section 7.B.6.2).\n- Establish initiatives for targeted outreach, mobile field-based programs, and open-access clinics.\n- Prioritize high-risk individuals, including those with overdose reversals, homelessness, or justice involvement (Section 7.B.6.3).\n- Collaborate with existing programs and consider integrating SUD services into Full Service Partnership (FSP) programs (Sections 7.B.6.4 & 7.B.6.5).\n\n### Action Items for County\n1. **Develop a Comprehensive Plan**: Create a detailed plan outlining existing and new programs for assertive field-based SUD treatment, including funding sources and expected timelines (by December 2025).\n2. **Identify and Leverage Existing Programs**: List current programs that support assertive field-based SUD services and assess their capacity for expansion or integration (by March 2026).\n3. **Establish New Initiatives**: Design and propose new programs, ensuring they meet the outlined requirements and prioritize high-risk individuals (by June 2027).\n4. **Coordinate with Local Services**: Document partnerships with local emergency services to enhance outreach and rapid referrals (ongoing, with initial documentation by July 2028).\n5. **Monitor and Report Progress**: Set up a system to track outreach efforts, program locations, and implementation progress, with a report due by June 2029.\n\n### Open Questions / Ambiguities\n- Clarification is needed on the criteria for identifying \"high-risk\" individuals for outreach prioritization.\n- Further guidance on the extent of collaboration required with existing programs would be beneficial.\n- Details on funding mechanisms for new initiatives outside of BHSA dollars are unclear.\n\n---\n\n**Processing Metadata:**\n- Priority: High\n- Statute Confidence: Low\n- Policy Confidence: Low\n- Relevant Statutes: None identified\n- Revision Count: 0\n\n**Quality Issues Noted:**\n- Missing specific funding sources for existing and new programs.\n- Action item timelines could be more precise, especially for ongoing tasks.\n- Incomplete citation for the policy manual reference.",
+  "action_items": [
+    "**Develop a Comprehensive Plan**: Create a detailed plan outlining existing and new programs for assertive field-based SUD treatment, including funding sources and expected timelines (by December 2025).",
+    "**Identify and Leverage Existing Programs**: List current programs that support assertive field-based SUD services and assess their capacity for expansion or integration (by March 2026).",
+    "**Establish New Initiatives**: Design and propose new programs, ensuring they meet the outlined requirements and prioritize high-risk individuals (by June 2027).",
+    "**Coordinate with Local Services**: Document partnerships with local emergency services to enhance outreach and rapid referrals (ongoing, with initial documentation by July 2028).",
+    "**Monitor and Report Progress**: Set up a system to track outreach efforts, program locations, and implementation progress, with a report due by June 2029."
+  ],
+  "priority": "High",
+  "quality_score": 8.1,
+  "passes_review": true,
+  "metadata": {
+    "statute_confidence": "Low",
+    "policy_confidence": "Low",
+    "relevant_statutes": [],
+    "revision_count": 0,
+    "quality_issues": [
+      "Missing specific funding sources for existing and new programs.",
+      "Action item timelines could be more precise, especially for ongoing tasks.",
+      "Incomplete citation for the policy manual reference."
+    ],
+    "quality_suggestions": [
+      "Include specific funding sources for each program listed in the action items.",
+      "Clarify timelines for ongoing tasks to ensure accountability.",
+      "Complete the citation for the policy manual to ensure proper referencing."
+    ],
+    "statute_chunks_retrieved": 10,
+    "policy_chunks_retrieved": 10
+  }
+}

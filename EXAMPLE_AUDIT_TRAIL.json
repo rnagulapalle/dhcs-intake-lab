@@ -1,0 +1,210 @@
+{
+  "question": "What are the documentation requirements for client assessments?",
+  "success": true,
+  "extracted_requirements": [
+    {
+      "requirement_id": "REQ-S001",
+      "source_type": "statute",
+      "document_id": "W&I Code § 5600.5",
+      "section_heading": "Client Records",
+      "exact_quote": "Counties shall maintain client records including assessment documentation for all behavioral health services recipients.",
+      "chunk_id": "S1",
+      "extraction_confidence": "high"
+    },
+    {
+      "requirement_id": "REQ-S002",
+      "source_type": "statute",
+      "document_id": "W&I Code § 14680",
+      "section_heading": "Assessment Standards",
+      "exact_quote": "Assessments must include diagnostic evaluation, functional assessment, and determination of medical necessity.",
+      "chunk_id": "S3",
+      "extraction_confidence": "high"
+    },
+    {
+      "requirement_id": "REQ-P001",
+      "source_type": "policy",
+      "document_id": "Policy Manual Section 4.2.1",
+      "section_heading": "Assessment Documentation",
+      "exact_quote": "All assessments must be documented within 60 days of initial contact.",
+      "chunk_id": "P1",
+      "extraction_confidence": "high"
+    },
+    {
+      "requirement_id": "REQ-P002",
+      "source_type": "policy",
+      "document_id": "Policy Manual Section 4.2.2",
+      "section_heading": "Assessment Content",
+      "exact_quote": "Documentation must include mental health screening, substance use screening, and risk assessment.",
+      "chunk_id": "P2",
+      "extraction_confidence": "high"
+    },
+    {
+      "requirement_id": "REQ-P003",
+      "source_type": "policy",
+      "document_id": "Policy Manual Section 4.2.3",
+      "section_heading": "Assessment Review",
+      "exact_quote": "Counties are encouraged to review assessments for quality and completeness.",
+      "chunk_id": "P4",
+      "extraction_confidence": "medium"
+    }
+  ],
+  "verified_requirements": [
+    {
+      "requirement_id": "REQ-S001",
+      "source_type": "statute",
+      "document_id": "W&I Code § 5600.5",
+      "section_heading": "Client Records",
+      "exact_quote": "Counties shall maintain client records including assessment documentation for all behavioral health services recipients.",
+      "chunk_id": "S1",
+      "extraction_confidence": "high",
+      "verification_rationale": "Explicitly requires assessment documentation for all recipients. Directly addresses question about documentation requirements."
+    },
+    {
+      "requirement_id": "REQ-S002",
+      "source_type": "statute",
+      "document_id": "W&I Code § 14680",
+      "section_heading": "Assessment Standards",
+      "exact_quote": "Assessments must include diagnostic evaluation, functional assessment, and determination of medical necessity.",
+      "chunk_id": "S3",
+      "extraction_confidence": "high",
+      "verification_rationale": "Specifies required assessment components. Directly addresses what must be documented in assessments."
+    },
+    {
+      "requirement_id": "REQ-P001",
+      "source_type": "policy",
+      "document_id": "Policy Manual Section 4.2.1",
+      "section_heading": "Assessment Documentation",
+      "exact_quote": "All assessments must be documented within 60 days of initial contact.",
+      "chunk_id": "P1",
+      "extraction_confidence": "high",
+      "verification_rationale": "Establishes documentation timeline requirement. Directly addresses when assessments must be documented."
+    },
+    {
+      "requirement_id": "REQ-P002",
+      "source_type": "policy",
+      "document_id": "Policy Manual Section 4.2.2",
+      "section_heading": "Assessment Content",
+      "exact_quote": "Documentation must include mental health screening, substance use screening, and risk assessment.",
+      "chunk_id": "P2",
+      "extraction_confidence": "high",
+      "verification_rationale": "Lists specific required documentation components. Directly addresses what must be included in assessment documentation."
+    }
+  ],
+  "rejected_requirements": [
+    {
+      "requirement_id": "REQ-P003",
+      "source_type": "policy",
+      "document_id": "Policy Manual Section 4.2.3",
+      "section_heading": "Assessment Review",
+      "exact_quote": "Counties are encouraged to review assessments for quality and completeness.",
+      "chunk_id": "P4",
+      "extraction_confidence": "medium",
+      "verified": false,
+      "rejection_reason": "does_not_address_question",
+      "rejection_rationale": "This is a recommendation for quality review, not a documentation requirement. The word 'encouraged' indicates this is optional, not a mandatory documentation requirement."
+    }
+  ],
+  "final_answer": "Counties must maintain client records including assessment documentation for all behavioral health recipients [REQ-S001]. All assessments must be documented within 60 days of initial contact [REQ-P001].\n\nKey Documentation Requirements:\n- Assessments must include diagnostic evaluation, functional assessment, and determination of medical necessity [REQ-S002]\n- Documentation must include mental health screening, substance use screening, and risk assessment [REQ-P002]\n- Records must be maintained in compliance with W&I Code § 5600.5 and Policy Manual Section 4.2.1 [REQ-S001, REQ-P001]",
+  "statute_summary": "**Statute Requirements:**\n\n- Counties shall maintain client records including assessment documentation for all behavioral health services recipients. [REQ-S001]\n  *Source: W&I Code § 5600.5*\n\n- Assessments must include diagnostic evaluation, functional assessment, and determination of medical necessity. [REQ-S002]\n  *Source: W&I Code § 14680*",
+  "policy_summary": "**Policy Requirements:**\n\n- All assessments must be documented within 60 days of initial contact. [REQ-P001]\n  *Source: Policy Manual Section 4.2.1*\n\n- Documentation must include mental health screening, substance use screening, and risk assessment. [REQ-P002]\n  *Source: Policy Manual Section 4.2.2*",
+  "final_summary": "Counties must maintain client records including assessment documentation for all behavioral health recipients [REQ-S001]. All assessments must be documented within 60 days of initial contact [REQ-P001].\n\nKey Documentation Requirements:\n- Assessments must include diagnostic evaluation, functional assessment, and determination of medical necessity [REQ-S002]\n- Documentation must include mental health screening, substance use screening, and risk assessment [REQ-P002]\n- Records must be maintained in compliance with W&I Code § 5600.5 and Policy Manual Section 4.2.1 [REQ-S001, REQ-P001]",
+  "requirement_references": [
+    {
+      "requirement_id": "REQ-S001",
+      "used_in_answer": true,
+      "statement_context": "Counties must maintain assessment documentation"
+    },
+    {
+      "requirement_id": "REQ-S002",
+      "used_in_answer": true,
+      "statement_context": "Assessment content requirements"
+    },
+    {
+      "requirement_id": "REQ-P001",
+      "used_in_answer": true,
+      "statement_context": "60-day documentation timeline"
+    },
+    {
+      "requirement_id": "REQ-P002",
+      "used_in_answer": true,
+      "statement_context": "Required screening components"
+    }
+  ],
+  "unused_requirements": [],
+  "missing_evidence": [],
+  "composition_confidence": "high",
+  "evidence_audit_trail": {
+    "retrieval_stage": {
+      "statute_chunks_retrieved": 10,
+      "policy_chunks_retrieved": 10,
+      "total_chunks": 20
+    },
+    "extraction_stage": {
+      "total_requirements_extracted": 5,
+      "statute_requirements": 2,
+      "policy_requirements": 3,
+      "extraction_metadata": {
+        "total_chunks_processed": 20,
+        "statute_chunks_processed": 10,
+        "policy_chunks_processed": 10,
+        "statute_requirements_extracted": 2,
+        "policy_requirements_extracted": 3
+      }
+    },
+    "verification_stage": {
+      "total_requirements_verified": 5,
+      "requirements_passed": 4,
+      "requirements_rejected": 1,
+      "verification_pass_rate": 0.8,
+      "rejection_reasons": {
+        "does_not_address_question": 1
+      },
+      "has_sufficient_evidence": true,
+      "missing_evidence": []
+    },
+    "composition_stage": {
+      "requirements_used": 4,
+      "requirements_unused": 0,
+      "composition_confidence": "high",
+      "has_requirement_references": true
+    },
+    "overall": {
+      "pipeline_type": "evidence_first",
+      "grounding_confidence": "high",
+      "quality_score": 9.2,
+      "passes_review": true,
+      "revision_count": 0
+    }
+  },
+  "quality_score": 9.2,
+  "passes_review": true,
+  "metadata": {
+    "statute_confidence": "High",
+    "policy_confidence": "High",
+    "relevant_statutes": ["W&I Code § 5600.5", "W&I Code § 14680"],
+    "revision_count": 0,
+    "quality_issues": [],
+    "quality_suggestions": [],
+    "statute_chunks_retrieved": 10,
+    "policy_chunks_retrieved": 10,
+    "extraction_metadata": {
+      "total_chunks_processed": 20,
+      "statute_chunks_processed": 10,
+      "policy_chunks_processed": 10,
+      "total_requirements_extracted": 5,
+      "statute_requirements_extracted": 2,
+      "policy_requirements_extracted": 3
+    },
+    "verification_metadata": {
+      "total_requirements_verified": 5,
+      "requirements_passed": 4,
+      "requirements_rejected": 1,
+      "verification_pass_rate": 0.8,
+      "rejection_reasons": {
+        "does_not_address_question": 1
+      }
+    },
+    "grounding_confidence": "high",
+    "has_sufficient_evidence": true
+  }
+}

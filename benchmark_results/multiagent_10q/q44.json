@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "final_summary": "## Compliance Summary\n\n### Bottom Line\nCounties must develop and implement a comprehensive plan for assertive field-based SUD treatment services, ensuring all programs are operational by July 1, 2029.\n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nCounties must provide rapid access to FDA-approved Medication-Assisted Treatment (MAT) and establish at least one initiative in targeted outreach, mobile field-based programs, and open-access clinics. Assertive programs should prioritize individuals at higher risk of overdose and be strategically located in areas with high overdose rates. \n\n### Action Items for County\n1. **Develop a Comprehensive Plan**: Outline existing and new programs for assertive field-based SUD treatment, including funding sources and implementation timelines. Due by **March 2025**.\n2. **Initiate Data-Informed Outreach**: Start outreach efforts targeting BHSA-eligible individuals with SUD needs as soon as possible, ensuring ongoing engagement.\n3. **Collaborate with Local Services**: Partner with local emergency services and public health authorities to establish coordinated surveillance and overdose identification systems. Complete partnerships by **June 2026**.\n4. **Integrate SUD Services**: Explore integrating SUD treatment into existing Full Service Partnership (FSP) programs to support individuals with co-occurring conditions. Assess feasibility by **December 2025**.\n5. **Document Strategies and Locations**: Maintain records of outreach strategies, program locations, and partnerships to ensure compliance and facilitate reporting.\n\n### Open Questions / Ambiguities\n- Clarification is needed on the specific metrics for evaluating outreach effectiveness.\n- Further guidance may be required on integrating SUD services within existing FSP programs, especially regarding funding allocation.",
+  "final_response": "\u2705 **Good Quality** (Score: 8.4/10)\n\n## Compliance Summary\n\n### Bottom Line\nCounties must develop and implement a comprehensive plan for assertive field-based SUD treatment services, ensuring all programs are operational by July 1, 2029.\n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nCounties must provide rapid access to FDA-approved Medication-Assisted Treatment (MAT) and establish at least one initiative in targeted outreach, mobile field-based programs, and open-access clinics. Assertive programs should prioritize individuals at higher risk of overdose and be strategically located in areas with high overdose rates. \n\n### Action Items for County\n1. **Develop a Comprehensive Plan**: Outline existing and new programs for assertive field-based SUD treatment, including funding sources and implementation timelines. Due by **March 2025**.\n2. **Initiate Data-Informed Outreach**: Start outreach efforts targeting BHSA-eligible individuals with SUD needs as soon as possible, ensuring ongoing engagement.\n3. **Collaborate with Local Services**: Partner with local emergency services and public health authorities to establish coordinated surveillance and overdose identification systems. Complete partnerships by **June 2026**.\n4. **Integrate SUD Services**: Explore integrating SUD treatment into existing Full Service Partnership (FSP) programs to support individuals with co-occurring conditions. Assess feasibility by **December 2025**.\n5. **Document Strategies and Locations**: Maintain records of outreach strategies, program locations, and partnerships to ensure compliance and facilitate reporting.\n\n### Open Questions / Ambiguities\n- Clarification is needed on the specific metrics for evaluating outreach effectiveness.\n- Further guidance may be required on integrating SUD services within existing FSP programs, especially regarding funding allocation.\n\n---\n\n**Processing Metadata:**\n- Priority: High\n- Statute Confidence: Low\n- Policy Confidence: Low\n- Relevant Statutes: None identified\n- Revision Count: 0\n\n**Quality Issues Noted:**\n- Missing specific programs listed in Tables 25 and 26 as required.\n- No citations for specific policy sections referenced in the action items.",
+  "action_items": [
+    "**Develop a Comprehensive Plan**: Outline existing and new programs for assertive field-based SUD treatment, including funding sources and implementation timelines. Due by **March 2025**.",
+    "**Initiate Data-Informed Outreach**: Start outreach efforts targeting BHSA-eligible individuals with SUD needs as soon as possible, ensuring ongoing engagement.",
+    "**Collaborate with Local Services**: Partner with local emergency services and public health authorities to establish coordinated surveillance and overdose identification systems. Complete partnerships by **June 2026**.",
+    "**Integrate SUD Services**: Explore integrating SUD treatment into existing Full Service Partnership (FSP) programs to support individuals with co-occurring conditions. Assess feasibility by **December 2025**.",
+    "**Document Strategies and Locations**: Maintain records of outreach strategies, program locations, and partnerships to ensure compliance and facilitate reporting."
+  ],
+  "priority": "High",
+  "quality_score": 8.4,
+  "passes_review": true,
+  "metadata": {
+    "statute_confidence": "Low",
+    "policy_confidence": "Low",
+    "relevant_statutes": [],
+    "revision_count": 0,
+    "quality_issues": [
+      "Missing specific programs listed in Tables 25 and 26 as required.",
+      "No citations for specific policy sections referenced in the action items."
+    ],
+    "quality_suggestions": [
+      "Include detailed lists of existing and new programs in the summary as per the requirement.",
+      "Ensure all policy section references are properly cited in the summary."
+    ],
+    "statute_chunks_retrieved": 10,
+    "policy_chunks_retrieved": 10
+  }
+}

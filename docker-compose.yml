@@ -1,7 +1,269 @@
+# BHT Multi-Agent Platform - Docker Compose
+#
+# Profiles:
+#   - (default): api only - for development/smoke testing
+#   - test: automated smoke test with file-based audit verification
+#   - infra: full infrastructure (kafka, pinot, zookeeper)
+#   - dashboard: includes streamlit dashboard
+#   - generator: includes data generator
+#   - full: all services
+#
+# Usage:
+#   docker compose up agent-api                    # API only
+#   docker compose --profile infra up              # API + infrastructure
+#   docker compose --profile full up               # Everything
+#   docker compose --profile test up --abort-on-container-exit --exit-code-from smoke-test
+
 services:
+  # ==========================================================================
+  # Core API Service (default profile - stdout logging)
+  # ==========================================================================
+  agent-api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    image: bht-agent-api:latest
+    container_name: agent-api
+    profiles:
+      - default
+      - infra
+      - dashboard
+      - generator
+      - full
+    ports:
+      - "8000:8000"
+    environment:
+      # Secrets via environment (never in image)
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?OPENAI_API_KEY is required}
+      # Platform audit settings
+      BHT_PLATFORM_ENABLED: "true"
+      BHT_AUDIT_SINK: "stdout"
+      BHT_JSON_LOGS_ENABLED: "true"
+      BHT_AUDIT_LOG_PROMPTS: "false"
+      BHT_AUDIT_LOG_RESPONSES: "false"
+      # Smoke test endpoint
+      BHT_SMOKE_ENDPOINT_ENABLED: "true"
+      # Infrastructure endpoints (optional - graceful degradation)
+      PINOT_BROKER_URL: "http://pinot-broker:8099"
+      KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+      KAFKA_TOPIC: "dhcs_crisis_intake"
+      CHROMA_PERSIST_DIR: "/app/chroma_data"
+      LOG_LEVEL: "INFO"
+    volumes:
+      - chroma_data:/app/chroma_data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # ==========================================================================
+  # API Service for Test Profile (file-based audit logging)
+  # ==========================================================================
+  agent-api-test:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    image: bht-agent-api:latest
+    container_name: agent-api-test
+    profiles:
+      - test
+    ports:
+      - "8000:8000"
+    environment:
+      # Secrets via environment (never in image)
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?OPENAI_API_KEY is required}
+      # Platform audit settings - FILE-BASED for test verification
+      BHT_PLATFORM_ENABLED: "true"
+      BHT_AUDIT_SINK: "file"
+      BHT_AUDIT_FILE_PATH: "/app/logs/audit.jsonl"
+      BHT_JSON_LOGS_ENABLED: "true"
+      BHT_AUDIT_LOG_PROMPTS: "false"
+      BHT_AUDIT_LOG_RESPONSES: "false"
+      # Smoke test endpoint
+      BHT_SMOKE_ENDPOINT_ENABLED: "true"
+      # Infrastructure endpoints (optional - graceful degradation)
+      PINOT_BROKER_URL: "http://pinot-broker:8099"
+      KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+      KAFKA_TOPIC: "dhcs_crisis_intake"
+      CHROMA_PERSIST_DIR: "/app/chroma_data"
+      LOG_LEVEL: "INFO"
+    volumes:
+      - chroma_data:/app/chroma_data
+      - audit_logs:/app/logs
+    # Run as root to write to volume, then audit file will be readable
+    user: "0:0"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # ==========================================================================
+  # Smoke Test Runner (one-off)
+  # Verifies single-request correlation: api_request + llm_call + retrieval
+  # Automated assertions - exits 1 on any failure
+  # ==========================================================================
+  smoke-test:
+    image: curlimages/curl:8.5.0
+    container_name: smoke-test
+    depends_on:
+      agent-api-test:
+        condition: service_healthy
+    environment:
+      API_URL: "http://agent-api-test:8000"
+      AUDIT_FILE: "/app/logs/audit.jsonl"
+    volumes:
+      - audit_logs:/app/logs:ro
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        set -e
+        echo "=============================================="
+        echo "BHT AUTOMATED AUDIT CORRELATION SMOKE TEST"
+        echo "=============================================="
+        echo ""
+
+        # Step 1: Health check
+        echo "[1/6] Verifying API health..."
+        curl -fsS $${API_URL}/health
+        echo ""
+        echo "  ✓ Health check passed"
+        echo ""
+
+        # Step 2: Call smoke/correlate endpoint
+        echo "[2/6] Calling /smoke/correlate (triggers retrieval + llm_call)..."
+        RESPONSE=$$(curl -fsS -X POST $${API_URL}/smoke/correlate \
+          -H "Content-Type: application/json" \
+          -d '{"query":"What are the crisis response protocols?"}')
+        echo "  Response received (truncated): $${RESPONSE}" | head -c 200
+        echo "..."
+        echo ""
+
+        # Step 3: Extract trace_id
+        echo "[3/6] Extracting trace_id from response..."
+        TRACE_ID=$$(echo "$${RESPONSE}" | sed -n 's/.*"trace_id":"\([^"]*\)".*/\1/p')
+        if [ -z "$${TRACE_ID}" ]; then
+          echo "  ✗ FAIL: Could not extract trace_id from response"
+          exit 1
+        fi
+        echo "  ✓ trace_id: $${TRACE_ID}"
+        echo ""
+
+        # Wait for audit file to be written
+        sleep 2
+
+        # Step 4: Verify audit file exists and has content
+        echo "[4/6] Verifying audit file..."
+        if [ ! -f "$${AUDIT_FILE}" ]; then
+          echo "  ✗ FAIL: Audit file not found at $${AUDIT_FILE}"
+          exit 1
+        fi
+        AUDIT_LINES=$$(wc -l < "$${AUDIT_FILE}" | tr -d ' ')
+        echo "  ✓ Audit file exists with $${AUDIT_LINES} entries"
+        echo ""
+
+        # Step 5: Verify single-request correlation (CRITICAL)
+        echo "[5/6] Verifying SINGLE-REQUEST CORRELATION..."
+        echo "  Looking for trace_id $${TRACE_ID} in all three operations:"
+        echo ""
+
+        # Save all audit lines for this trace_id to a temp file
+        TRACE_LINES="/tmp/trace_lines.txt"
+        grep "$${TRACE_ID}" "$${AUDIT_FILE}" > "$${TRACE_LINES}" 2>/dev/null || true
+
+        # Debug: show what we found
+        echo "  Debug - Lines with trace_id:"
+        cat "$${TRACE_LINES}" || echo "  (no lines)"
+        echo ""
+
+        # Check api_request (must contain both api_request AND smoke/correlate)
+        if grep -q 'api_request' "$${TRACE_LINES}" && grep 'api_request' "$${TRACE_LINES}" | grep -q 'correlate'; then
+          echo "  ✓ api_request: FOUND"
+        else
+          echo "  ✗ api_request: NOT FOUND"
+          echo "  FAIL: trace_id not found in api_request for /smoke/correlate"
+          exit 1
+        fi
+
+        # Check retrieval
+        if grep -q 'retrieval' "$${TRACE_LINES}"; then
+          echo "  ✓ retrieval: FOUND"
+        else
+          echo "  ✗ retrieval: NOT FOUND"
+          echo "  FAIL: trace_id not found in retrieval operation"
+          exit 1
+        fi
+
+        # Check llm_call
+        if grep -q 'llm_call' "$${TRACE_LINES}"; then
+          echo "  ✓ llm_call: FOUND"
+        else
+          echo "  ✗ llm_call: NOT FOUND"
+          echo "  FAIL: trace_id not found in llm_call operation"
+          exit 1
+        fi
+        echo ""
+
+        # Step 6: Security checks
+        echo "[6/6] Running security checks..."
+
+        # Check for secrets in audit file
+        if grep -q "sk-" "$${AUDIT_FILE}"; then
+          echo "  ✗ FAIL: Found API key pattern (sk-) in audit file!"
+          exit 1
+        fi
+        echo "  ✓ No API key patterns found"
+
+        # Check for prompts/responses (should be disabled)
+        if grep -q '"prompt":' "$${AUDIT_FILE}"; then
+          echo "  ✗ FAIL: Found prompt content in audit file (should be disabled)!"
+          exit 1
+        fi
+        echo "  ✓ No prompt content logged"
+
+        if grep -q '"response":' "$${AUDIT_FILE}"; then
+          echo "  ✗ FAIL: Found response content in audit file (should be disabled)!"
+          exit 1
+        fi
+        echo "  ✓ No response content logged"
+        echo ""
+
+        # Final summary
+        echo "=============================================="
+        echo "SMOKE TEST RESULTS"
+        echo "=============================================="
+        echo ""
+        echo "trace_id: $${TRACE_ID}"
+        echo ""
+        echo "Operations verified (same trace_id):"
+        echo "  - api_request:  FOUND"
+        echo "  - retrieval:    FOUND"
+        echo "  - llm_call:     FOUND"
+        echo ""
+        echo "Security checks:"
+        echo "  - No secrets in logs: PASS"
+        echo "  - Prompts disabled:   PASS"
+        echo "  - Responses disabled: PASS"
+        echo ""
+        echo "=============================================="
+        echo "ALL ASSERTIONS PASSED"
+        echo "=============================================="
+    profiles:
+      - test
+
+  # ==========================================================================
+  # Infrastructure Services (profile: infra)
+  # ==========================================================================
   zookeeper:
     image: confluentinc/cp-zookeeper:7.6.1
     container_name: zookeeper
+    profiles:
+      - infra
+      - full
     environment:
       ZOOKEEPER_CLIENT_PORT: "2181"
       ZOOKEEPER_TICK_TIME: "2000"
@@ -18,6 +280,9 @@ services:
   kafka:
     image: confluentinc/cp-kafka:7.6.1
     container_name: kafka
+    profiles:
+      - infra
+      - full
     depends_on:
       zookeeper:
         condition: service_healthy
@@ -27,14 +292,10 @@ services:
     environment:
       KAFKA_BROKER_ID: "1"
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
-
-      # inside docker network
       KAFKA_LISTENERS: "PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092"
-      # containers use kafka:9092; host uses localhost:29092
       KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092"
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT"
       KAFKA_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
-
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: "1"
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: "1"
@@ -51,6 +312,9 @@ services:
   pinot-controller:
     image: apachepinot/pinot:1.1.0
     container_name: pinot-controller
+    profiles:
+      - infra
+      - full
     depends_on:
       zookeeper:
         condition: service_healthy
@@ -66,14 +330,23 @@ services:
       - "9000"
     ports:
       - "9000:9000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
     restart: unless-stopped
 
   pinot-broker:
     image: apachepinot/pinot:1.1.0
     container_name: pinot-broker
+    profiles:
+      - infra
+      - full
     depends_on:
       pinot-controller:
-        condition: service_started
+        condition: service_healthy
     command:
       - "StartBroker"
       - "-zkAddress"
@@ -86,14 +359,23 @@ services:
       - "8099"
     ports:
       - "8099:8099"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8099/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
     restart: unless-stopped
 
   pinot-server:
     image: apachepinot/pinot:1.1.0
     container_name: pinot-server
+    profiles:
+      - infra
+      - full
     depends_on:
       pinot-controller:
-        condition: service_started
+        condition: service_healthy
     command:
       - "StartServer"
       - "-zkAddress"
@@ -111,9 +393,16 @@ services:
       - "8097:8097"
     restart: unless-stopped
 
+  # ==========================================================================
+  # Generator Service (profile: generator)
+  # ==========================================================================
   generator:
     build: ./generator
+    image: bht-generator:latest
     container_name: generator
+    profiles:
+      - generator
+      - full
     depends_on:
       kafka:
         condition: service_healthy
@@ -123,50 +412,29 @@ services:
       RATE_PER_SEC: "5"
     restart: unless-stopped
 
-  # Multi-Agent AI System Services
-  agent-api:
-    build:
-      context: .
-      dockerfile: api/Dockerfile
-    container_name: agent-api
-    depends_on:
-      pinot-broker:
-        condition: service_started
-    ports:
-      - "8000:8000"
-    environment:
-      OPENAI_API_KEY: ${OPENAI_API_KEY}
-      PINOT_BROKER_URL: "http://pinot-broker:8099"
-      KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
-      KAFKA_TOPIC: "dhcs_crisis_intake"
-      CHROMA_PERSIST_DIR: "/app/chroma_data"
-      LOG_LEVEL: "INFO"
-    volumes:
-      - chroma_data:/app/chroma_data
-      - ./agents:/app/agents
-      - ./api:/app/api
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
+  # ==========================================================================
+  # Dashboard Service (profile: dashboard)
+  # ==========================================================================
   dashboard:
     build:
       context: .
       dockerfile: dashboard/Dockerfile
+    image: bht-dashboard:latest
     container_name: dashboard
+    profiles:
+      - dashboard
+      - full
     depends_on:
       agent-api:
-        condition: service_started
+        condition: service_healthy
     ports:
       - "8501:8501"
     environment:
       API_BASE_URL: "http://agent-api:8000"
-    volumes:
-      - ./dashboard:/app
     restart: unless-stopped
 
 volumes:
   chroma_data:
+    name: bht_chroma_data
+  audit_logs:
+    name: bht_audit_logs

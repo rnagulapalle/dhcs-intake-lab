@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "final_summary": "## Compliance Summary\n\n### Bottom Line\nCounties must pilot innovative behavioral health projects using BHSA funding and document intended outcomes to ensure compliance with policy requirements.\n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nCounties must pilot projects under the BHSA funding components (Housing Interventions, Full-Service Partnership, and Behavioral Health Services Support) as outlined in Policy Manual Section 7.A.6. Additionally, counties must allocate unspent MHSA funds to these components in compliance with suballocation requirements (Policy Manual Section 6.B.1). While counties must document intended outcomes focusing on measurable impacts, they should also engage stakeholders to tailor projects to community needs.\n\n### Action Items for County\n1. Identify and select innovative behavioral health projects to pilot, ensuring they align with BHSA funding components (by June 2026).\n2. Develop a framework for documenting intended outcomes, focusing on measurable impacts on service delivery and client outcomes (by July 2026).\n3. Allocate any unspent MHSA funds to BHSA components, ensuring compliance with population-specific requirements (ongoing).\n4. Engage community stakeholders in the project development process to address local needs and gather input (by June 2026).\n\n### Open Questions / Ambiguities\n- What specific criteria should counties use to measure the effectiveness of innovative projects?\n- What are the detailed reporting requirements for counties post-implementation of these projects? Further guidance from DHCS is needed.",
+  "final_response": "\u2705 **Good Quality** (Score: 8.5/10)\n\n## Compliance Summary\n\n### Bottom Line\nCounties must pilot innovative behavioral health projects using BHSA funding and document intended outcomes to ensure compliance with policy requirements.\n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nCounties must pilot projects under the BHSA funding components (Housing Interventions, Full-Service Partnership, and Behavioral Health Services Support) as outlined in Policy Manual Section 7.A.6. Additionally, counties must allocate unspent MHSA funds to these components in compliance with suballocation requirements (Policy Manual Section 6.B.1). While counties must document intended outcomes focusing on measurable impacts, they should also engage stakeholders to tailor projects to community needs.\n\n### Action Items for County\n1. Identify and select innovative behavioral health projects to pilot, ensuring they align with BHSA funding components (by June 2026).\n2. Develop a framework for documenting intended outcomes, focusing on measurable impacts on service delivery and client outcomes (by July 2026).\n3. Allocate any unspent MHSA funds to BHSA components, ensuring compliance with population-specific requirements (ongoing).\n4. Engage community stakeholders in the project development process to address local needs and gather input (by June 2026).\n\n### Open Questions / Ambiguities\n- What specific criteria should counties use to measure the effectiveness of innovative projects?\n- What are the detailed reporting requirements for counties post-implementation of these projects? Further guidance from DHCS is needed.\n\n---\n\n**Processing Metadata:**\n- Priority: High\n- Statute Confidence: Low\n- Policy Confidence: Low\n- Relevant Statutes: None identified\n- Revision Count: 0\n\n**Quality Issues Noted:**\n- Action item 2 could specify the format for the outcome documentation framework.\n- Citations for policy sections are not consistently formatted.",
+  "action_items": [
+    "Identify and select innovative behavioral health projects to pilot, ensuring they align with BHSA funding components (by June 2026).",
+    "Develop a framework for documenting intended outcomes, focusing on measurable impacts on service delivery and client outcomes (by July 2026).",
+    "Allocate any unspent MHSA funds to BHSA components, ensuring compliance with population-specific requirements (ongoing).",
+    "Engage community stakeholders in the project development process to address local needs and gather input (by June 2026)."
+  ],
+  "priority": "High",
+  "quality_score": 8.5,
+  "passes_review": true,
+  "metadata": {
+    "statute_confidence": "Low",
+    "policy_confidence": "Low",
+    "relevant_statutes": [],
+    "revision_count": 0,
+    "quality_issues": [
+      "Action item 2 could specify the format for the outcome documentation framework.",
+      "Citations for policy sections are not consistently formatted."
+    ],
+    "quality_suggestions": [
+      "Clarify the expected format or elements of the outcome documentation framework in action item 2.",
+      "Ensure all policy section references are formatted consistently, e.g., 'Policy Manual Section 7.A.6' should be uniformly cited."
+    ],
+    "statute_chunks_retrieved": 10,
+    "policy_chunks_retrieved": 10
+  }
+}

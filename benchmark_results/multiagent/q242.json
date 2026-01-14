@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "final_summary": "## Compliance Summary\n\n### Bottom Line\nCounties must ensure that 35% of their Behavioral Health Services Fund is allocated to Full Service Partnership (FSP) programs and provide two levels of coordinated care for eligible adults and older adults. \n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nCounties must adhere to the following requirements from the DHCS Policy Manual:\n- Ensure providers meet three unspecified requirements for BHSA funding related to FSP or BHSS (Policy Manual Section 6).\n- Allocate 35% of funds from the State Controller\u2019s Office to the Behavioral Health Services Fund specifically for FSP programs (Policy Manual Section 7.B.1).\n- Provide two levels of coordinated care, including Assertive Community Treatment (ACT) and FSP Intensive Case Management (ICM) (Policy Manual Section 7).\n\nCounties should also document fund allocation and establish care standards based on acuity for both adults and children (Policy Manual Section 7.B.2 and 7.B.4). Outreach and Engagement (O&E) activities are recommended to enhance service delivery (Policy Manual Section 7.A.3).\n\n### Action Items for County\n1. Allocate 35% of the Behavioral Health Services Fund to FSP programs and document this allocation (by December 2023).\n2. Identify and establish the three specific requirements for providers under BHSA funding (by January 2024).\n3. Implement two levels of coordinated care (ACT and ICM) for eligible adults and older adults (by March 2024).\n4. Develop a plan for Outreach and Engagement activities to identify and engage individuals in the behavioral health system (by April 2024).\n\n### Open Questions / Ambiguities\n- Clarification is needed on the specific \"three requirements\" that providers must meet under BHSA funding.\n- Guidance is lacking on how to measure the effectiveness of Outreach and Engagement activities funded by BHSS. Further clarification from DHCS is necessary.",
+  "final_response": "\u2705 **Good Quality** (Score: 8.5/10)\n\n## Compliance Summary\n\n### Bottom Line\nCounties must ensure that 35% of their Behavioral Health Services Fund is allocated to Full Service Partnership (FSP) programs and provide two levels of coordinated care for eligible adults and older adults. \n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nCounties must adhere to the following requirements from the DHCS Policy Manual:\n- Ensure providers meet three unspecified requirements for BHSA funding related to FSP or BHSS (Policy Manual Section 6).\n- Allocate 35% of funds from the State Controller\u2019s Office to the Behavioral Health Services Fund specifically for FSP programs (Policy Manual Section 7.B.1).\n- Provide two levels of coordinated care, including Assertive Community Treatment (ACT) and FSP Intensive Case Management (ICM) (Policy Manual Section 7).\n\nCounties should also document fund allocation and establish care standards based on acuity for both adults and children (Policy Manual Section 7.B.2 and 7.B.4). Outreach and Engagement (O&E) activities are recommended to enhance service delivery (Policy Manual Section 7.A.3).\n\n### Action Items for County\n1. Allocate 35% of the Behavioral Health Services Fund to FSP programs and document this allocation (by December 2023).\n2. Identify and establish the three specific requirements for providers under BHSA funding (by January 2024).\n3. Implement two levels of coordinated care (ACT and ICM) for eligible adults and older adults (by March 2024).\n4. Develop a plan for Outreach and Engagement activities to identify and engage individuals in the behavioral health system (by April 2024).\n\n### Open Questions / Ambiguities\n- Clarification is needed on the specific \"three requirements\" that providers must meet under BHSA funding.\n- Guidance is lacking on how to measure the effectiveness of Outreach and Engagement activities funded by BHSS. Further clarification from DHCS is necessary.\n\n---\n\n**Processing Metadata:**\n- Priority: High\n- Statute Confidence: Low\n- Policy Confidence: Low\n- Relevant Statutes: None identified\n- Revision Count: 0\n\n**Quality Issues Noted:**\n- The three specific requirements for BHSA funding are not detailed, which could lead to confusion.\n- The 'Statutory Basis' section states no specific requirements identified, which may mislead readers about the existence of relevant policies.",
+  "action_items": [
+    "Allocate 35% of the Behavioral Health Services Fund to FSP programs and document this allocation (by December 2023).",
+    "Identify and establish the three specific requirements for providers under BHSA funding (by January 2024).",
+    "Implement two levels of coordinated care (ACT and ICM) for eligible adults and older adults (by March 2024).",
+    "Develop a plan for Outreach and Engagement activities to identify and engage individuals in the behavioral health system (by April 2024)."
+  ],
+  "priority": "High",
+  "quality_score": 8.5,
+  "passes_review": true,
+  "metadata": {
+    "statute_confidence": "Low",
+    "policy_confidence": "Low",
+    "relevant_statutes": [],
+    "revision_count": 0,
+    "quality_issues": [
+      "The three specific requirements for BHSA funding are not detailed, which could lead to confusion.",
+      "The 'Statutory Basis' section states no specific requirements identified, which may mislead readers about the existence of relevant policies."
+    ],
+    "quality_suggestions": [
+      "Provide the specific three requirements for BHSA funding to enhance clarity and completeness.",
+      "Consider rephrasing the 'Statutory Basis' section to acknowledge the policy guidance instead of stating no requirements were found."
+    ],
+    "statute_chunks_retrieved": 10,
+    "policy_chunks_retrieved": 10
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "final_summary": "## Compliance Summary\n\n### Bottom Line\nCounties must develop and implement innovative behavioral health programs and pilots as part of their planning and funding strategies to comply with state requirements.\n\n### Statutory Basis\n- **W&I Code \u00a7 5899** mandates counties to create innovative programs to enhance service delivery.\n- **W&I Code \u00a7 5892** requires counties to allocate funds for these innovative projects as part of the Behavioral Health Services Fund.\n- **W&I Code \u00a7 5830** encourages the development of innovative approaches to address mental health and substance use disorders.\n\n### Policy Guidance\n- The DHCS Policy Manual states counties \"must\" develop innovative pilots and projects to build evidence for new strategies (Section 7.A.6).\n- Counties \"should\" consider community input when designing these programs to ensure they meet local needs.\n- Counties must document the allocation of unspent MHSA funds towards these initiatives and report on their outcomes.\n\n### Action Items for County\n1. Develop a strategic plan outlining the innovative behavioral health pilots and projects to be implemented (by July 1, 2026).\n2. Allocate unspent MHSA funds towards these innovative projects, ensuring compliance with suballocation requirements (ongoing).\n3. Engage with community stakeholders to gather input on program design and needs assessment (by June 2026).\n4. Establish a reporting framework to track outcomes and effectiveness of the pilots, contributing to the statewide evidence base (by July 2026).\n\n### Open Questions / Ambiguities\n- What specific criteria define an \"innovative\" project, and how can counties demonstrate effectiveness?\n- Further clarification is needed on the reporting format and frequency for innovative project outcomes.",
+  "final_response": "\u2705 **Good Quality** (Score: 8.8/10)\n\n## Compliance Summary\n\n### Bottom Line\nCounties must develop and implement innovative behavioral health programs and pilots as part of their planning and funding strategies to comply with state requirements.\n\n### Statutory Basis\n- **W&I Code \u00a7 5899** mandates counties to create innovative programs to enhance service delivery.\n- **W&I Code \u00a7 5892** requires counties to allocate funds for these innovative projects as part of the Behavioral Health Services Fund.\n- **W&I Code \u00a7 5830** encourages the development of innovative approaches to address mental health and substance use disorders.\n\n### Policy Guidance\n- The DHCS Policy Manual states counties \"must\" develop innovative pilots and projects to build evidence for new strategies (Section 7.A.6).\n- Counties \"should\" consider community input when designing these programs to ensure they meet local needs.\n- Counties must document the allocation of unspent MHSA funds towards these initiatives and report on their outcomes.\n\n### Action Items for County\n1. Develop a strategic plan outlining the innovative behavioral health pilots and projects to be implemented (by July 1, 2026).\n2. Allocate unspent MHSA funds towards these innovative projects, ensuring compliance with suballocation requirements (ongoing).\n3. Engage with community stakeholders to gather input on program design and needs assessment (by June 2026).\n4. Establish a reporting framework to track outcomes and effectiveness of the pilots, contributing to the statewide evidence base (by July 2026).\n\n### Open Questions / Ambiguities\n- What specific criteria define an \"innovative\" project, and how can counties demonstrate effectiveness?\n- Further clarification is needed on the reporting format and frequency for innovative project outcomes.\n\n---\n\n**Processing Metadata:**\n- Priority: High\n- Statute Confidence: Low\n- Policy Confidence: Low\n- Relevant Statutes: W&I Code \u00a7 5830, W&I Code \u00a7 5892, W&I Code \u00a7 5899\n- Revision Count: 0\n\n**Quality Issues Noted:**\n- Action item 2 lacks a specific timeline for ongoing activities.\n- The bottom line could be more concise.",
+  "action_items": [
+    "Develop a strategic plan outlining the innovative behavioral health pilots and projects to be implemented (by July 1, 2026).",
+    "Allocate unspent MHSA funds towards these innovative projects, ensuring compliance with suballocation requirements (ongoing).",
+    "Engage with community stakeholders to gather input on program design and needs assessment (by June 2026).",
+    "Establish a reporting framework to track outcomes and effectiveness of the pilots, contributing to the statewide evidence base (by July 2026)."
+  ],
+  "priority": "High",
+  "quality_score": 8.8,
+  "passes_review": true,
+  "metadata": {
+    "statute_confidence": "Low",
+    "policy_confidence": "Low",
+    "relevant_statutes": [
+      "W&I Code \u00a7 5830",
+      "W&I Code \u00a7 5892",
+      "W&I Code \u00a7 5899"
+    ],
+    "revision_count": 0,
+    "quality_issues": [
+      "Action item 2 lacks a specific timeline for ongoing activities.",
+      "The bottom line could be more concise."
+    ],
+    "quality_suggestions": [
+      "Add a specific timeline for action item 2 to clarify expectations.",
+      "Consider rephrasing the bottom line to be more direct and succinct."
+    ],
+    "statute_chunks_retrieved": 10,
+    "policy_chunks_retrieved": 10
+  }
+}

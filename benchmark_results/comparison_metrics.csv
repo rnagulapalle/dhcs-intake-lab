@@ -1,0 +1,6 @@
+question_id,ground_truth_score,score_quartile,poc_success,poc_time_sec,poc_statute_len,poc_policy_len,poc_final_len,poc_statute_chunks,poc_policy_chunks,ma_success,ma_time_sec,ma_quality_score,ma_passes_review,ma_action_items,ma_open_questions,ma_priority,ma_statute_conf,ma_policy_conf,ma_revisions,ma_statute_len,ma_policy_len,ma_final_len,ma_statute_chunks,ma_policy_chunks
+44,50.0,Q1,True,37.10852289199829,3013,3102,2727,0,0,True,26.278319120407104,8.1,True,5,0,High,Low,Low,0,0,0,0,10,10
+114,70.0,Q2,True,28.08389711380005,2362,2895,2687,0,0,True,26.870103120803833,8.8,True,4,0,High,Low,Low,0,0,0,0,10,10
+242,70.0,Q2,True,29.541404247283936,2224,3021,2951,0,0,True,22.379496097564697,8.5,True,4,0,High,Low,Low,0,0,0,0,10,10
+40,75.0,Q3,True,26.436060190200806,2703,2700,2514,0,0,True,21.896254062652588,8.8,True,4,0,High,Low,Low,0,0,0,0,10,10
+93,85.0,Q4,True,29.456690788269043,2257,2429,2307,0,0,True,19.749794006347656,8.5,True,5,0,High,Low,Low,0,0,0,0,10,10

@@ -1,0 +1,142 @@
+{
+  "sampling_metadata": {
+    "timestamp": "2026-01-09T17:35:11.293002",
+    "source_file": "data/PreProcessRubric_v0.csv",
+    "total_questions_in_source": 392,
+    "sample_size": 10,
+    "random_seed": 42,
+    "sampling_method": "stratified_by_section_and_diversity"
+  },
+  "stratification_strategy": {
+    "description": "Proportional allocation to major sections, with within-section diversification by sub-section and topic",
+    "target_allocation": {
+      "Behavioral Health Services Act/Fund Programs": "4 questions (38% of source data)",
+      "Statewide Behavioral Health Goals": "2 questions (22% of source data)",
+      "County Behavioral Health System Overview": "1 question (9% of source data)",
+      "Plan Approval and Compliance": "1 question (9% of source data)",
+      "Other smaller sections": "2 questions (22% of source data)"
+    },
+    "diversification": "Within each section, selected from different sub-sections to maximize coverage"
+  },
+  "sample_distribution": {
+    "by_section": {
+      "Behavioral Health Services Act/Fund Programs": 4,
+      "Statewide Behavioral Health Goals": 2,
+      "County Behavioral Health System Overview": 1,
+      "Plan Approval and  Compliance": 1,
+      "County Behavioral Health Services Care Continuum": 1,
+      "Workforce Strategy": 1
+    },
+    "by_topic": {
+      "Housing Interventions": 1,
+      "Project Level Narrative": 4,
+      "Numerical Responses": 1,
+      "Demographic Disparities": 1,
+      "County Comparisons": 1,
+      "Challenges Concerns": 2
+    },
+    "unique_subsections": 10
+  },
+  "questions": [
+    {
+      "sample_index": 1,
+      "source_index": 310,
+      "question_id": "311",
+      "section": "Behavioral Health Services Act/Fund Programs",
+      "subsection": "Housing Interventions - Capital Development Projects - Capital Development Project Specific Information",
+      "topic": "Housing Interventions",
+      "question_preview": "7. [Optional question] Please provide additional details to explain if the county is\nfunding capital...",
+      "full_question": "7. [Optional question] Please provide additional details to explain if the county is\nfunding capital development projects with BHSA Housing Interventions that are \nnot tied to a specific number of units [narrative box]"
+    },
+    {
+      "sample_index": 2,
+      "source_index": 203,
+      "question_id": "204",
+      "section": "Behavioral Health Services Act/Fund Programs",
+      "subsection": "Behavioral Health Services and Supports (BHSS) - Early Intervention (EI) Programs - Coordinated Specialty Care for First Episode Psychosis (CSC) program",
+      "topic": "Project Level Narrative",
+      "question_preview": "4. Will the county’s CSC program be supplemented with other (non-BHSA) funding\nsource(s)? [Yes/No ra...",
+      "full_question": "4. Will the county’s CSC program be supplemented with other (non-BHSA) funding\nsource(s)? [Yes/No radio button; logic: if Y populate question 4a below]\na. Please list the other funding source(s) [narrative box]"
+    },
+    {
+      "sample_index": 3,
+      "source_index": 222,
+      "question_id": "223",
+      "section": "Behavioral Health Services Act/Fund Programs",
+      "subsection": "Full Service Partnerships - Full Service Partnership (FSP) Intensive Case Management (ICM)\nEligible Population",
+      "topic": "Numerical Responses",
+      "question_preview": "2. Taking into account the total eligible population estimates, current and\nprojected workforce capa...",
+      "full_question": "2. Taking into account the total eligible population estimates, current and\nprojected workforce capacity, and BHSA funding allocation for FSP, please \nprovide the total number of teams and FTEs (county-operated and county\ncontracted providers) the county behavioral health system plans to utilize (i.e.,\ncurrent and new FTEs) to provide FSP ICM over this Integrated Plan period, by\nfiscal year. DHCS will provide further guidance and TA to assist counties with\ncompleting these fields. Table 20. Total Number of FSP ICM Practitioners and Teams"
+    },
+    {
+      "sample_index": 4,
+      "source_index": 241,
+      "question_id": "242",
+      "section": "Behavioral Health Services Act/Fund Programs",
+      "subsection": "Assertive Field-Based Substance Use Disorder (SUD) Questions - Medications for Addiction Treatment (MAT) Details",
+      "topic": "Project Level Narrative",
+      "question_preview": "1. Describe how the county will assess the gap between current county MAT resources\n(including progr...",
+      "full_question": "1. Describe how the county will assess the gap between current county MAT resources\n(including programs and providers) and MAT resources that can meet estimated\nneeds [narrative box]"
+    },
+    {
+      "sample_index": 5,
+      "source_index": 87,
+      "question_id": "88",
+      "section": "Statewide Behavioral Health Goals",
+      "subsection": "Institutionalization - Primary Measures\n- Inpatient administrative days (DHCS) rate, FY 2023",
+      "topic": "Demographic Disparities",
+      "question_preview": "2. What disparities did you identify across demographic groups or special populations?\n[Multi-select...",
+      "full_question": "2. What disparities did you identify across demographic groups or special populations?\n[Multi-select]\na. Age\nb. Gender\nc. Race or Ethnicity\nd. Sex\ne. Spoken Language\nf. None Identified\ng. No Disparities Data Available\nh. Other [narrative box]"
+    },
+    {
+      "sample_index": 6,
+      "source_index": 60,
+      "question_id": "61",
+      "section": "Statewide Behavioral Health Goals",
+      "subsection": "Priority Statewide Behavioral Health Goals for Improvement - Primary Measures - SMHS Penetration Rates for Adults and Children & Youth, FY 2023",
+      "topic": "County Comparisons",
+      "question_preview": "1. How does your county status compare to the statewide rate?  \n\nFor adults/older adults [above/belo...",
+      "full_question": "1. How does your county status compare to the statewide rate?  \n\nFor adults/older adults [above/below/same/N/A] \nFor children/youth [above/below/same/N/A]"
+    },
+    {
+      "sample_index": 7,
+      "source_index": 56,
+      "question_id": "57",
+      "section": "County Behavioral Health System Overview",
+      "subsection": "County Behavioral Health System Service Delivery Landscape - Drug Medi-Cal (DMC)/Drug Medi-Cal Organized Delivery System (DMC-ODS) - Drug Medi-Cal Organized Delivery System (DMC-ODS)",
+      "topic": "Challenges Concerns",
+      "question_preview": "2. Does the county wish to disclose any implementation challenges or concerns with the\nrequirements ...",
+      "full_question": "2. Does the county wish to disclose any implementation challenges or concerns with the\nrequirements under this program? ? [Yes/No radio buttons; if Y, populate question 2a below]\na.Please describe these challenges or concerns [narrative box]\n"
+    },
+    {
+      "sample_index": 8,
+      "source_index": 377,
+      "question_id": "378",
+      "section": "Plan Approval and  Compliance",
+      "subsection": "County Administrator or Designee Certification",
+      "topic": "Challenges Concerns",
+      "question_preview": "2. Does the county wish to disclose any implementation challenges or concerns with\nthese requirement...",
+      "full_question": "2. Does the county wish to disclose any implementation challenges or concerns with\nthese requirements? [Yes/No radio button; if Y, populate question 2.a below]\na. Please describe any implementation challenges or concerns with the BHSA \nfiscal accountability and stakeholder participation requirements [narrative box]\nPrinted Name \n___________________________\nTitle [Chief Administration Officer]\nSignature Date"
+    },
+    {
+      "sample_index": 9,
+      "source_index": 175,
+      "question_id": "176",
+      "section": "County Behavioral Health Services Care Continuum",
+      "subsection": "County Behavioral Health Services Care Continuum",
+      "topic": "Project Level Narrative",
+      "question_preview": "The Behavioral Health Care Continuum is composed of two distinct frameworks for\nsubstance use disord...",
+      "full_question": "The Behavioral Health Care Continuum is composed of two distinct frameworks for\nsubstance use disorder and mental health services. These frameworks are used for\ncounties to demonstrate planned expenditures across key service categories in their\nservice continuum. Questions on the Behavioral Health Care Continuum are in the \nIntegrated Plan Budget Template."
+    },
+    {
+      "sample_index": 10,
+      "source_index": 341,
+      "question_id": "342",
+      "section": "Workforce Strategy",
+      "subsection": "Build Workforce to Address Statewide Behavioral Health\nGoals - Assess Workforce Gaps",
+      "topic": "Project Level Narrative",
+      "question_preview": "2. Upload any data source(s) used to determine vacancy rate [optional file upload]",
+      "full_question": "2. Upload any data source(s) used to determine vacancy rate [optional file upload]"
+    }
+  ]
+}

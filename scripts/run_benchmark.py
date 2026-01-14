@@ -1,0 +1,136 @@
+"""
+Benchmark orchestrator - runs both systems on 10 questions
+"""
+import json
+import subprocess
+import time
+from pathlib import Path
+from datetime import datetime
+
+def run_benchmark():
+    """Execute benchmark on 10 selected questions"""
+
+    # Load sample
+    sample_path = Path("/Users/raj/dhcs-intake-lab/benchmark_sample_5.json")
+    with open(sample_path) as f:
+        sample = json.load(f)
+
+    questions = sample['questions']
+    print(f"Running benchmark on {len(questions)} questions")
+
+    # Create output directory
+    output_dir = Path("/Users/raj/dhcs-intake-lab/benchmark_results")
+    output_dir.mkdir(exist_ok=True)
+
+    poc_dir = output_dir / "poc"
+    multiagent_dir = output_dir / "multiagent"
+    poc_dir.mkdir(exist_ok=True)
+    multiagent_dir.mkdir(exist_ok=True)
+
+    results = []
+
+    for i, q in enumerate(questions, 1):
+        print(f"\n{'='*80}")
+        print(f"Question {i}/{len(questions)} [Index {q['index']}]")
+        print(f"Score: {q['score']:.0f} | Quartile: {q['score_quartile']}")
+        print(f"Question: {q['IP_Question'][:100]}...")
+        print(f"{'='*80}")
+
+        question_id = q['index']
+        question_text = q['IP_Question']
+        section = q['policy_manual_section']
+
+        # Run POC
+        print("\n[POC] Running...")
+        poc_output = poc_dir / f"q{question_id}.json"
+        start_poc = time.time()
+        try:
+            subprocess.run([
+                "python3",
+                "/Users/raj/dhcs-intake-lab/scripts/run_poc_single.py",
+                "--question", question_text,
+                "--section", section,
+                "--output", str(poc_output)
+            ], check=True, timeout=300, capture_output=True, text=True)
+            poc_time = time.time() - start_poc
+            print(f"[POC] Completed in {poc_time:.1f}s")
+            poc_success = True
+        except subprocess.TimeoutExpired:
+            print(f"[POC] TIMEOUT after 300s")
+            poc_success = False
+            poc_time = 300
+        except Exception as e:
+            print(f"[POC] ERROR: {e}")
+            poc_success = False
+            poc_time = 0
+
+        # Run Multi-Agent
+        print("\n[Multi-Agent] Running...")
+        ma_output = multiagent_dir / f"q{question_id}.json"
+        start_ma = time.time()
+        try:
+            subprocess.run([
+                "python3",
+                "/Users/raj/dhcs-intake-lab/scripts/run_multiagent_single.py",
+                "--question", question_text,
+                "--section", section,
+                "--output", str(ma_output)
+            ], check=True, timeout=300, capture_output=True, text=True)
+            ma_time = time.time() - start_ma
+            print(f"[Multi-Agent] Completed in {ma_time:.1f}s")
+            ma_success = True
+        except subprocess.TimeoutExpired:
+            print(f"[Multi-Agent] TIMEOUT after 300s")
+            ma_success = False
+            ma_time = 300
+        except Exception as e:
+            print(f"[Multi-Agent] ERROR: {e}")
+            ma_success = False
+            ma_time = 0
+
+        results.append({
+            'question_id': question_id,
+            'question': question_text[:100] + "...",
+            'ground_truth_score': q['score'],
+            'score_quartile': q['score_quartile'],
+            'poc_success': poc_success,
+            'poc_time_seconds': poc_time,
+            'multiagent_success': ma_success,
+            'multiagent_time_seconds': ma_time
+        })
+
+        # Save progress
+        progress_file = output_dir / "benchmark_progress.json"
+        with open(progress_file, 'w') as f:
+            json.dump({
+                'timestamp': datetime.now().isoformat(),
+                'questions_completed': i,
+                'results': results
+            }, f, indent=2)
+
+    # Final summary
+    summary = {
+        'timestamp': datetime.now().isoformat(),
+        'total_questions': len(questions),
+        'poc_success_rate': sum(r['poc_success'] for r in results) / len(results),
+        'multiagent_success_rate': sum(r['multiagent_success'] for r in results) / len(results),
+        'avg_poc_time': sum(r['poc_time_seconds'] for r in results if r['poc_success']) / sum(r['poc_success'] for r in results),
+        'avg_multiagent_time': sum(r['multiagent_time_seconds'] for r in results if r['multiagent_success']) / sum(r['multiagent_success'] for r in results),
+        'results': results
+    }
+
+    summary_file = output_dir / "benchmark_summary.json"
+    with open(summary_file, 'w') as f:
+        json.dump(summary, f, indent=2)
+
+    print(f"\n{'='*80}")
+    print("BENCHMARK COMPLETE")
+    print(f"{'='*80}")
+    print(f"POC success rate: {summary['poc_success_rate']*100:.0f}%")
+    print(f"Multi-agent success rate: {summary['multiagent_success_rate']*100:.0f}%")
+    print(f"Avg POC time: {summary['avg_poc_time']:.1f}s")
+    print(f"Avg multi-agent time: {summary['avg_multiagent_time']:.1f}s")
+    print(f"\nResults saved to: {output_dir}")
+
+if __name__ == "__main__":
+    run_benchmark()

@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "final_summary": "## Compliance Summary\n\n### Bottom Line\nCounties must provide rapid access to all FDA-approved Medications for Addiction Treatment (MAT), including buprenorphine, methadone, and naltrexone, through assertive field-based programs.\n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nAccording to the DHCS Policy Manual:\n- Counties \"must\" ensure rapid access to all FDA-approved MAT (Section 7.B.6.2).\n- Assertive field-based programs \"must\" include outreach to individuals with substance use disorder (SUD) needs (Section 7.B.6.1).\n- Mobile programs \"must\" guarantee quick access to MAT, either by embedding prescribers or referring individuals (Section 7.B.6.2.3).\n- Counties \"should\" document outreach efforts and engage high-risk populations (Sections 7.B.6.3 and 7.B.6.4).\n\n### Action Items for County\n1. Identify and list all FDA-approved MAT options to be offered, including buprenorphine, methadone, and naltrexone (by January 2024).\n2. Develop and implement at least one mobile field-based program to ensure low-barrier access to MAT (by March 2024).\n3. Document all outreach strategies and engagement efforts to demonstrate compliance with proactive engagement mandates (ongoing).\n4. Collaborate with existing assertive field-based programs to enhance service delivery and outreach (by February 2024).\n\n### Open Questions / Ambiguities\n- Clarification is needed on which specific forms of MAT are required beyond the general mandate for all FDA-approved options.\n- Additional guidance may be necessary regarding the operationalization of mobile field-based programs, including staffing and resources.",
+  "final_response": "\u2705 **Good Quality** (Score: 8.6/10)\n\n## Compliance Summary\n\n### Bottom Line\nCounties must provide rapid access to all FDA-approved Medications for Addiction Treatment (MAT), including buprenorphine, methadone, and naltrexone, through assertive field-based programs.\n\n### Statutory Basis\nNo specific statutory requirement identified.\n\n### Policy Guidance\nAccording to the DHCS Policy Manual:\n- Counties \"must\" ensure rapid access to all FDA-approved MAT (Section 7.B.6.2).\n- Assertive field-based programs \"must\" include outreach to individuals with substance use disorder (SUD) needs (Section 7.B.6.1).\n- Mobile programs \"must\" guarantee quick access to MAT, either by embedding prescribers or referring individuals (Section 7.B.6.2.3).\n- Counties \"should\" document outreach efforts and engage high-risk populations (Sections 7.B.6.3 and 7.B.6.4).\n\n### Action Items for County\n1. Identify and list all FDA-approved MAT options to be offered, including buprenorphine, methadone, and naltrexone (by January 2024).\n2. Develop and implement at least one mobile field-based program to ensure low-barrier access to MAT (by March 2024).\n3. Document all outreach strategies and engagement efforts to demonstrate compliance with proactive engagement mandates (ongoing).\n4. Collaborate with existing assertive field-based programs to enhance service delivery and outreach (by February 2024).\n\n### Open Questions / Ambiguities\n- Clarification is needed on which specific forms of MAT are required beyond the general mandate for all FDA-approved options.\n- Additional guidance may be necessary regarding the operationalization of mobile field-based programs, including staffing and resources.\n\n---\n\n**Processing Metadata:**\n- Priority: High\n- Statute Confidence: Low\n- Policy Confidence: Low\n- Relevant Statutes: None identified\n- Revision Count: 0\n\n**Quality Issues Noted:**\n- The 'Open Questions/Ambiguities' section could be more detailed regarding specific forms of MAT.\n- The action items could benefit from more specificity in terms of responsibilities.",
+  "action_items": [
+    "Identify and list all FDA-approved MAT options to be offered, including buprenorphine, methadone, and naltrexone (by January 2024).",
+    "Develop and implement at least one mobile field-based program to ensure low-barrier access to MAT (by March 2024).",
+    "Document all outreach strategies and engagement efforts to demonstrate compliance with proactive engagement mandates (ongoing).",
+    "Collaborate with existing assertive field-based programs to enhance service delivery and outreach (by February 2024)."
+  ],
+  "priority": "High",
+  "quality_score": 8.6,
+  "passes_review": true,
+  "metadata": {
+    "statute_confidence": "Low",
+    "policy_confidence": "Low",
+    "relevant_statutes": [],
+    "revision_count": 0,
+    "quality_issues": [
+      "The 'Open Questions/Ambiguities' section could be more detailed regarding specific forms of MAT.",
+      "The action items could benefit from more specificity in terms of responsibilities."
+    ],
+    "quality_suggestions": [
+      "Expand the 'Open Questions/Ambiguities' section to clarify which specific forms of MAT are required beyond the general mandate.",
+      "Specify who is responsible for each action item to enhance accountability."
+    ],
+    "statute_chunks_retrieved": 10,
+    "policy_chunks_retrieved": 10
+  }
+}

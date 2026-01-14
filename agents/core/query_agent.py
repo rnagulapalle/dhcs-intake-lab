@@ -3,7 +3,7 @@ Query Agent - Answers natural language questions about crisis intake data
 """
 import logging
 from typing import Dict, Any
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain.output_parsers import PydanticOutputParser
 from pydantic.v1 import BaseModel, Field
 

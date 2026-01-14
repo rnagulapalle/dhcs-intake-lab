@@ -5,7 +5,7 @@ import logging
 from typing import Dict, Any, List
 from datetime import datetime
 import pandas as pd
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 
 from agents.core.base_agent import BaseAgent
 from agents.utils.pinot_client import PinotClient

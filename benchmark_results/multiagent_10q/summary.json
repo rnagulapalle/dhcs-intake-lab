@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-01-09T16:01:54.659547",
+  "total_questions": 10,
+  "successful": 10,
+  "failed": 0,
+  "avg_quality_score": 8.61,
+  "pass_rate": 1.0,
+  "avg_time_seconds": 28.20809233188629,
+  "results": [
+    {
+      "question_id": 44,
+      "ground_truth_score": 50.0,
+      "quartile": "Q1",
+      "success": true,
+      "time_seconds": 26.047874927520752,
+      "quality_score": 8.4,
+      "passes_review": true,
+      "action_items_count": 5,
+      "revisions": 0
+    },
+    {
+      "question_id": 325,
+      "ground_truth_score": 60.0,
+      "quartile": "Q1",
+      "success": true,
+      "time_seconds": 28.99837899208069,
+      "quality_score": 8.8,
+      "passes_review": true,
+      "action_items_count": 5,
+      "revisions": 0
+    },
+    {
+      "question_id": 119,
+      "ground_truth_score": 50.0,
+      "quartile": "Q1",
+      "success": true,
+      "time_seconds": 21.38885188102722,
+      "quality_score": 8.5,
+      "passes_review": true,
+      "action_items_count": 4,
+      "revisions": 0
+    },
+    {
+      "question_id": 114,
+      "ground_truth_score": 70.0,
+      "quartile": "Q2",
+      "success": true,
+      "time_seconds": 27.19881272315979,
+      "quality_score": 8.6,
+      "passes_review": true,
+      "action_items_count": 4,
+      "revisions": 0
+    },
+    {
+      "question_id": 242,
+      "ground_truth_score": 70.0,
+      "quartile": "Q2",
+      "success": true,
+      "time_seconds": 24.274564266204834,
+      "quality_score": 8.6,
+      "passes_review": true,
+      "action_items_count": 4,
+      "revisions": 0
+    },
+    {
+      "question_id": 197,
+      "ground_truth_score": 70.0,
+      "quartile": "Q2",
+      "success": true,
+      "time_seconds": 26.327157974243164,
+      "quality_score": 8.6,
+      "passes_review": true,
+      "action_items_count": 4,
+      "revisions": 0
+    },
+    {
+      "question_id": 40,
+      "ground_truth_score": 75.0,
+      "quartile": "Q3",
+      "success": true,
+      "time_seconds": 31.255470991134644,
+      "quality_score": 8.8,
+      "passes_review": true,
+      "action_items_count": 5,
+      "revisions": 0
+    },
+    {
+      "question_id": 10,
+      "ground_truth_score": 75.0,
+      "quartile": "Q3",
+      "success": true,
+      "time_seconds": 37.15787601470947,
+      "quality_score": 8.6,
+      "passes_review": true,
+      "action_items_count": 4,
+      "revisions": 0
+    },
+    {
+      "question_id": 233,
+      "ground_truth_score": 75.0,
+      "quartile": "Q3",
+      "success": true,
+      "time_seconds": 29.226905822753906,
+      "quality_score": 8.6,
+      "passes_review": true,
+      "action_items_count": 4,
+      "revisions": 0
+    },
+    {
+      "question_id": 93,
+      "ground_truth_score": 85.0,
+      "quartile": "Q4",
+      "success": true,
+      "time_seconds": 30.205029726028442,
+      "quality_score": 8.6,
+      "passes_review": true,
+      "action_items_count": 4,
+      "revisions": 0
+    }
+  ]
+}
